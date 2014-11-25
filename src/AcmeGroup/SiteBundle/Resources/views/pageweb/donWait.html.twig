@@ -1,0 +1,24 @@
+{% extends "AcmeGroupSiteBundle::sitePage.html.twig" %}
+{% block title %}{{ pageweb.title|raw }} - {{ parent() }}{% endblock %}
+{% block header %}{{ parent() }}{% endblock header %}
+
+{% block mainwindow %}
+<div id="pagedroite" class="topdecal12">
+	<h1>{{ pageweb.titreh1|raw }}</h1>
+	<br class="hidden-xs" />
+	<br class="hidden-xs" />
+	<br class="hidden-xs" />
+	<div class="col-md-2 hidden-xs"></div>
+	<div class="col-md-8 col-xs-12 well well-lg center-child">
+		<h1><span class="glyphicon glyphicon-cog"></span></h1>
+		<h1>{{ magnifyText("Le paiment en ligne est en maintenance pour l'instant") }}</h1>
+		<h4>Merci de votre compréhension.</h4>
+	</div>
+	<div class="col-md-2 hidden-xs"></div>
+	<div style="height:10px;clear:both;"></div>
+	<span class="badge backpage" title="Revenir à la page précédente">Retour</span>
+	<div style="height:20px;clear:both;"></div>
+</div>
+{% endblock mainwindow %}
+
+{% block boutondon %}{% endblock boutondon %}

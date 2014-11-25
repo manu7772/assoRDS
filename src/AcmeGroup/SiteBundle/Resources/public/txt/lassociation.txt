@@ -1,0 +1,2 @@
+<h2>L'association</h2>
+<p>Texte de présentation de l'association</p>

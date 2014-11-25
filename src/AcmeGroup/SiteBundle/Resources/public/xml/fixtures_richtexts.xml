@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+entités liées :
+nom    -> nomDuChampLocal* + [_nomDeLEntitéLiée] + __nomDuChampDeLentiteLiée (ex. : statut__nom) (* avec 's' !!!)
+toutes entités :
+valeur -> si plusieurs valeurs possibles, séparer les valeurs par un pipe "|"
+       -> commencer par un "+" pour ajouter aussi les valeurs par défaut, sinon elles ne seront pas ajoutées
+
+       (ex. : typeImage__nom="+Universel|Ambiance") -> revient à écrire typeImage_typeImage__nom
+       (ex. : imagePpale_image__nom="Curvy 2|Curvy 3")
+
+fichiers externes : "import###" + nomDuDossier + "::" + nom du fichier (ex. texte="import@txt::intro.txt")
+  -> utiliser "importConcat###" pour concaténer les fichiers textes et n'obtenir qu'une seule valeur d'après tous les fichiers
+noms de fichiers multiples : séparer par "|" (ex. texte="import@txt::intro.txt|intro2.txt|xml::intro3.txt")
+  -> préciser à chaque fois le dossier / s'il n'est pas précisé, le nom du dossier précédent est repris.
+
+ -->
+<categories>
+	<categorie nom="Légalité" titre="Légalité" resume="Statuts de l'association." texte="import@txt::legalite.txt" protectedOnRemove="1" typeRichtext__nom="legalite" />
+	<categorie nom="Notre association" titre="Notre association" resume="Résumé de notre association" texte="import@txt::lassociation.txt" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Notre équipe" titre="Notre équipe" resume="Résumé sur notre équipe" texte="import@txt::notre-equipe.txt" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Ensemble de l'équipe" titre="Ensemble de l'équipe" resume="Résumé sur l'ensemble de l'équipe…" texte="Texte sur l'ensemble de l'équipe…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Trombinoscope" titre="Trombinoscope" resume="Résumé sur le Trombinoscope…" texte="Texte sur le Trombinoscope…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Membres d'administration" titre="Membres d'administration" resume="Résumé sur les membres d'administration" texte="Texte sur les membres d'administration…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Les bénévoles" titre="Les bénévoles" resume="Résumé sur les bénévoles" texte="Texte sur Les bénévoles…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Actions" titre="Actions" resume="Résumé sur les Actions" texte="Texte sur Les Actions…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Livre d'or" titre="Livre d'or" resume="Résumé sur le Livre d'or" texte="Texte sur le Livre d'or…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Hôpitaux partenaires" titre="Hôpitaux partenaires" resume="Résumé sur les Hôpitaux partenaires" texte="Texte sur les Hôpitaux partenaires" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="CHU Saint-Etienne" titre="CHU Saint-Etienne" resume="Résumé sur le CHU Saint-Etienne" texte="Texte sur le CHU Saint-Etienne…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Centre Romans Ferrari" titre="Centre Romans Ferrari" resume="Résumé sur le Centre Romans Ferrari" texte="Texte sur le Centre Romans Ferrari" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+</categories>

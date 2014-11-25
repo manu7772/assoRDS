@@ -1,0 +1,20 @@
+<div id="news-home">
+	<div id="news-info">
+		<h2>{{ newshome.nom }}</h2>
+		{% if newshome.image is not null %}
+		<img src="{{ asset('images/tn128/' ~ newshome.image.fichierNom) }}" alt="image" class="img-thumbnail" style="{{ imgVolume(newshome.image, 10, 120, 200) }}">
+		{% endif %}
+		{% set texte = phraseCut(newshome.texte, 400) %}
+		<span class="hidden-xs">
+			<p>{{ texte|raw }}
+				{% if newshome.texte|length != texte|length %}
+				<a href="{{ url('acme_site_detailEvent', {eventSlug: newshome.slug, typeEvent: newshome.typeEvenement.slug}) }}" style="float:right;">…lire la suite</a>
+				<div style="clear:both;height:0px;"></div>
+				{% endif %}
+			</p>
+		</span>
+		<span class="visible-xs">
+			<p style="padding-top:6px;">{{ magnifyText(newshome.texte)|raw }}</p>
+		</span>
+	</div>
+</div>

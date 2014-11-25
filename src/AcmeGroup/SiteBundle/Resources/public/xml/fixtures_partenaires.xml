@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+entités liées :
+nom    -> nomDuChampLocal* + [_nomDeLEntitéLiée] + __nomDuChampDeLentiteLiée (ex. : statut__nom) (* sans 's' !!!)
+toutes entités :
+valeur -> si plusieurs valeurs possibles, séparer les valeurs par un pipe "|"
+       -> commencer par un "+" pour ajouter aussi les valeurs par défaut, sinon elles ne seront pas ajoutées
+
+       (ex. : typeImage__nom="+Universel|Ambiance") -> revient à écrire typeImage_typeImage__nom
+       (ex. : imagePpale_image__nom="Curvy 2|Curvy 3")
+
+fichiers externes : "import@" + nomDuDossier + "::" + nom du fichier (ex. texte="import@txt::intro.txt")
+  -> utiliser "importConcat@" pour concaténer les fichiers textes et n'obtenir qu'une seule valeur d'après tous les fichiers
+noms de fichiers multiples : séparer par "|" (ex. texte="import@txt::intro.txt|intro2.txt|xml::intro3.txt")
+  -> préciser à chaque fois le dossier / s'il n'est pas précisé, le nom du dossier précédent est repris.
+
+ -->
+<categories>
+	<categorie nom="Centre Romans Ferrari" typePartenaire__nom="hopitaux" accroche="Centre Médical de Rééducation Pédiatrique" url="http://www.romansferrari.fr/" email="" tel="04 37 85 56 56" fax="04 37 85 56 57" descriptif="" codepub="" logo_image__nom="logoCRF" image__nom="" adresse__nom="Centre Romans Ferrari" />
+	<categorie nom="C.H.U. de Saint-Étienne" typePartenaire__nom="hopitaux" accroche="" descriptif="" url="http://www.chu-st-etienne.fr/" email="" tel="04 77 82 80 00" fax="" codepub="" logo_image__nom="" image__nom="" adresse__nom="CHU de Saint-Etienne" />
+
+	<categorie nom="Cyclo Club de Thizy les Bourgs" subvention="1500" typePartenaire__nom="sportifs" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="cyclo1" image__nom="Cyclo Club remise maillot" adresse__nom="" />
+	<categorie nom="Association Sportive Rugby de Cours la Ville" subvention="250" typePartenaire__nom="sportifs" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="as rugby cours la ville" image__nom="" adresse__nom="" />
+
+	<categorie nom="Municipalité de Thizy les Bourgs" subvention="500" typePartenaire__nom="institutionnels" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="" image__nom="" adresse__nom="" />
+	<categorie nom="Municipalité de Cours la Ville" subvention="250" typePartenaire__nom="institutionnels" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="" image__nom="" adresse__nom="" />
+	<categorie nom="Municipalité de Fürth im Odenwald" subvention="500" typePartenaire__nom="institutionnels" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="images4R63RA1B" image__nom="" adresse__nom="" />
+	<categorie nom="Conseil général du Rhône" subvention="0" typePartenaire__nom="institutionnels" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="CG69" image__nom="" adresse__nom="" />
+	<categorie nom="I.U.T. de Roanne" subvention="300" typePartenaire__nom="institutionnels" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="logo_iut_roanne" image__nom="" adresse__nom="" />
+
+	<categorie nom="Club des amateurs de Porsches 911" subvention="760" typePartenaire__nom="culturels" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="911" image__nom="" adresse__nom="" />
+	<categorie nom="Boîte de nuit" subvention="0" typePartenaire__nom="culturels" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="" image__nom="" adresse__nom="" />
+	<categorie nom="Parc d'oiseaux" subvention="0" typePartenaire__nom="culturels" accroche="" url="" email="" tel="" fax="" descriptif="" codepub="" logo_image__nom="" image__nom="" adresse__nom="" />
+</categories>

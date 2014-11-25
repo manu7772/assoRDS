@@ -1,0 +1,36 @@
+{% extends "AcmeGroupSiteBundle::sitePage.html.twig" %}
+{% block title %}{{ pageweb.title|raw }} - {{ parent() }}{% endblock %}
+{% block header %}{{ parent() }}{% endblock header %}
+
+{% block mainwindow %}
+<div id="pagedroite" class="row topdecal12 bottomdecal30">
+	<h1>{{ pageweb.titreh1|raw }}</h1>
+	<div class="bloc-partenaire-detail">
+		{% if partenaire != false %}
+		<h2>{{ magnifyText(partenaire.nom)|raw }}</h2>
+		{% if partenaire.logo is not null %}
+		<img src="{{ asset('images/original/' ~ partenaire.logo.fichierNom) }}" alt="logo {{ partenaire.nom }}" style="{{ imgVolume(partenaire.logo, 10, 200, 120) }}">
+		{% endif %}
+		<p class="texte">{{ magnifyText(partenaire.accroche)|raw }}</p>
+		{% if partenaire.descriptif is not null and partenaire.descriptif != "" %}
+		<h5>En détails</h5>
+		<p class="texte">{{ magnifyText(partenaire.descriptif)|raw }}</p>
+		{% endif %}
+		{% if partenaire.commentaire is not null and partenaire.commentaire != "" %}
+		<h5>Notes</h5>
+		<p class="texte">{{ magnifyText(partenaire.commentaire)|raw }}</p>
+		{% endif %}
+		{% if partenaire.image is not null %}
+		<a href="{{ asset('images/original/' ~ partenaire.image.fichierNom) }}" title="{{ partenaire.image.nom|striptags }}" class="fancybox" data-fancybox-group="gallery{{ partenaire.image.id }}">
+			<img src="{{ asset('images/tn200/' ~ partenaire.image.fichierNom) }}" alt="{{ partenaire.image.nom|striptags }}" class="img-thumbnail" style="{{ imgVolume(partenaire.image, 10, 366, 300) }}">
+		</a>
+		{% endif %}
+		{% else %}
+		<h2>{{ pageweb.titreh1|raw }} - Partenaire non trouvé</h2>
+		<p>Ce partenaire n'a pu être trouvé dans la base de données.</p>
+		{% endif %}
+		<span class="badge backpage" title="Revenir à la page précédente">Retour</span>
+		<div style="height:20px;clear:both;"></div>
+	</div>
+</div>
+{% endblock mainwindow %}

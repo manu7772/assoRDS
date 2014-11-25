@@ -1,0 +1,42 @@
+{% extends "AcmeGroupSiteBundle::sitePage.html.twig" %}
+{% block title %}{{ pageweb.title|raw }} - {{ parent() }}{% endblock %}
+{% block header %}{{ parent() }}{% endblock header %}
+
+{% block mainwindow %}
+<div id="pagedroite" class="topdecal12 bottomdecal30">
+	<h1>{{ pageweb.titreh1|raw }}</h1>
+	{% for event in events %}
+	{% if loop.index0 < 1 %}
+		{% set taille = 200 %}
+		{% set sh2 = "high" %}
+	{% else %}
+		{% set taille = 80 %}
+		{% set sh2 = "" %}
+	{% endif %}
+	<div class="bloc-event-list">
+		<div class="col-xs-3 visible-xs"></div>
+		<div class="event-bloc-image col-md-3 col-xs-6">
+			{{ include('AcmeGroupSiteBundle:blocs:imageEvent.html.twig') }}
+		</div>
+		<div class="col-xs-3 visible-xs"></div>
+		<div class="event-bloc-texte col-md-9 col-xs-12">
+			<div>
+				<h2 class="{{ sh2|raw }}">
+					<a href="{{ url('acme_site_detailEvent', {eventSlug: event.slug, typeEvent: event.typeEvenement.slug}) }}" title="Voir la page {{ event.nom|raw }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp;
+					<a href="{{ url('acme_site_detailEvent', {eventSlug: event.slug, typeEvent: event.typeEvenement.slug}) }}" title="Coup d'œil rapide" class="badge hidden-xs">
+						<span class="glyphicon glyphicon-eye-open"></span>
+					</a>
+				</h2>
+				{% if event.datedebut != null or event.datefin != null %}
+				<p class="date">{{ intervalDateFR(event.datedebut, event.datefin, false, true)|raw }}</p>
+				{% else %}
+				<p class="date ital">Permanent</p>
+				{% endif %}
+				<p class="justify">{{ magnifyText(phraseCut(event.descriptif, 300))|raw }}</p>
+			</div>
+		</div>
+		<div style="height:0px;clear:both;"></div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock mainwindow %}

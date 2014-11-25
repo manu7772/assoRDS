@@ -1,0 +1,23 @@
+{% extends "AcmeGroupSiteBundle::sitePage.html.twig" %}
+{% block title %}{{ pageweb.title|raw }} - {{ parent() }}{% endblock %}
+{% block header %}{{ parent() }}{% endblock header %}
+
+{% block mainwindow %}
+<div id="pagedroite" class="topdecal12 bottomdecal30">
+	<div class="row">
+		<!-- <div class="col-md-2"></div> -->
+		<div class="justify col-md-8">
+			<h1>{{ pageweb.titreh1|raw }}</h1>
+			{% if pageweb.code is not null and pageweb.code != "" %}
+			<p>{{ magnifyText(pageweb.code)|raw }}</p>
+			{% endif %}
+			{% if pageweb.richtexts|length > 0 %}
+			{% for richtext in pageweb.richtexts %}
+			<p>{{ magnifyText(richtext.texte)|raw }}</p>
+			{% endfor %}
+			{% endif %}
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+{% endblock mainwindow %}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+entités liées :
+nom    -> nomDuChampLocal* + [_nomDeLEntitéLiée] + __nomDuChampDeLentiteLiée (ex. : statut__nom) (* sans 's' !!!)
+toutes entités :
+valeur -> si plusieurs valeurs possibles, séparer les valeurs par un pipe "|"
+       -> commencer par un "+" pour ajouter aussi les valeurs par défaut, sinon elles ne seront pas ajoutées
+
+       (ex. : typeImage__nom="+Universel|Ambiance") -> revient à écrire typeImage_typeImage__nom
+       (ex. : imagePpale_image__nom="Curvy 2|Curvy 3")
+
+fichiers externes : "import@" + nomDuDossier + "::" + nom du fichier (ex. texte="import@txt::intro.txt")
+  -> utiliser "importConcat@" pour concaténer les fichiers textes et n'obtenir qu'une seule valeur d'après tous les fichiers
+noms de fichiers multiples : séparer par "|" (ex. texte="import@txt::intro.txt|intro2.txt|xml::intro3.txt")
+  -> préciser à chaque fois le dossier / s'il n'est pas précisé, le nom du dossier précédent est repris.
+
+ -->
+<categories>
+	<!-- versions -->
+	<categorie nom="enteteRDS_wide" descriptif="" typeImage__nom="version" fichierOrigine="enteteRDS_wide.png" version__nom="Rayon de Soleil" />
+	<categorie nom="enteteRDS_mini" descriptif="" typeImage__nom="version" fichierOrigine="enteteRDS_mini.png" version__nom="Rayon de Soleil" />
+	<categorie nom="faviconRDS" descriptif="" typeImage__nom="favicon" fichierOrigine="faviconRDS.png" version__nom="Rayon de Soleil" />
+	<categorie nom="logoRDS" descriptif="" typeImage__nom="logo" fichierOrigine="logoRDS.png" version__nom="Rayon de Soleil" />
+
+	<categorie nom="enteteSNC_wide" descriptif="" typeImage__nom="version" fichierOrigine="enteteSNC_wide.jpg" version__nom="Sonnenschein" />
+	<categorie nom="faviconSNC" descriptif="" typeImage__nom="favicon" fichierOrigine="faviconSNC.png" version__nom="Sonnenschein" />
+	<categorie nom="logoSNC" descriptif="" typeImage__nom="logo" fichierOrigine="logoSNC.png" version__nom="Sonnenschein" />
+
+	<!-- Logos partenaires -->
+	<categorie nom="logoCRF" descriptif="" typeImage__nom="logo" fichierOrigine="LogoCentreRomansFerrari.png" />
+	<categorie nom="911" descriptif="" typeImage__nom="logo" fichierOrigine="911.png" />
+	<categorie nom="as rugby cours la ville" descriptif="" typeImage__nom="logo" fichierOrigine="as rugby cours la ville.png" />
+	<categorie nom="CG69" descriptif="" typeImage__nom="logo" fichierOrigine="CG69.png" />
+	<categorie nom="cyclo1" descriptif="" typeImage__nom="logo" fichierOrigine="cyclo1.gif" />
+	<categorie nom="images4R63RA1B" descriptif="" typeImage__nom="logo" fichierOrigine="images4R63RA1B.jpg" />
+	<categorie nom="logo_iut_roanne" descriptif="" typeImage__nom="logo" fichierOrigine="logo_iut_roanne.jpg" />
+
+	<categorie nom="diapo1" descriptif="Redonnons-leur le sourire !" typeImage__nom="universel|ambiance|diaporama" fichierOrigine="diapo1.jpg" version__nom="Rayon de Soleil|Sonnenschein" />
+	<categorie nom="diapo2" descriptif="" typeImage__nom="universel|ambiance|diaporama" fichierOrigine="diapo2.jpg" version__nom="Rayon de Soleil|Sonnenschein" />
+	<categorie nom="diapo3" descriptif="Rejoignez-nous !" typeImage__nom="universel|ambiance|diaporama" fichierOrigine="diapo0.jpg" version__nom="Rayon de Soleil|Sonnenschein" />
+	<!-- <categorie nom="diapo4" descriptif="" typeImage__nom="universel|ambiance|diaporama" fichierOrigine="diapo3.jpg" version__nom="Rayon de Soleil|Sonnenschein" /> -->
+
+	<categorie nom="DSC_0090" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="DSC_0090.jpeg" />
+	<categorie nom="DSC_0116" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="DSC_0116.jpeg" />
+	<categorie nom="IMG_1022" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="IMG_1022.jpeg" />
+	<categorie nom="IMG_2316" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="IMG_2316.jpeg" />
+	<categorie nom="LouAnne" descriptif="Lou-Anne" typeImage__nom="universel|ambiance|article" fichierOrigine="Edito-Actualites_html_m1e496dc5.jpg" />
+	<categorie nom="Site001" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="site_capture_01.png" />
+	<categorie nom="Cyclo Club remise maillot" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="CycloClubremiseMaillot.jpg" />
+</categories>
+
+

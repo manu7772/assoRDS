@@ -1,0 +1,32 @@
+{% extends "AcmeGroupSiteBundle::sitePage.html.twig" %}
+{% block title %}{{ pageweb.title }} - {{ parent() }}{% endblock %}
+{% block main_contain %}
+<div class="row nomargin col-md-8 col-sm-7 col-xs-12">
+	<h1>{{ pageweb.titreh1|raw }} {{ app.session.get('version').nom }}</h1>
+	{% if pageweb.code is not null and pageweb.code != "" %}
+	<p class="well">{{ magnifyText(pageweb.code)|raw }}</p>
+	{% endif %}
+	<address>
+		<strong>{{ app.session.get('version').nom }}</strong><br>
+		{{ app.session.get('version').adresse.adresse }}<br>
+		{{ app.session.get('version').adresse.cp }} {{ app.session.get('version').adresse.ville }}<br>
+		<abbr title="Téléphone">Tél. :</abbr> {{ app.session.get('version').tel }}<br>
+		<abbr title="Fax">Fax. :</abbr> {{ app.session.get('version').fax }}
+	</address>
+	<address>
+		<a href="{{ url('acme_site_home') }}" title="{{ app.session.get('version').nom }}">
+			<strong>Site {{ app.session.get('version').nom }}</strong>
+		</a>
+		<br>
+		<a href="mailto:info@publimage.com">{{ app.session.get('version').email }}</a>
+	</address>
+	<iframe width="350" height="255" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.fr/maps?f=q&amp;source=s_q&amp;hl=fr&amp;geocode=&amp;q={{ googleMapURL(app.session.get('version').adresse.adresse ~ '+' ~ app.session.get('version').adresse.cp ~ '+' ~ app.session.get('version').adresse.ville) }}&amp;aq=&amp;vpsrc=6&amp;ie=UTF8&amp;hq=&amp;hnear={{ googleMapURL(app.session.get('version').adresse.adresse ~ '+' ~ app.session.get('version').adresse.cp ~ '+' ~ app.session.get('version').adresse.ville) }}&amp;z=15&amp;iwloc=A&amp;output=embed&iwloc=near"></iframe>
+</div>
+{% endblock main_contain %}
+
+{% block second_contain %}
+{{ render(controller('AcmeGroupSiteBundle:Site:infoRecente')) }}
+{# render(controller('AcmeGroupSiteBundle:Site:infos')) #}
+{% endblock second_contain %}
+
+

@@ -1,0 +1,42 @@
+<footer id="footer" class="container">
+	<ul class="listcookies hidden-xs">
+		<li class="straight"><a href="#" class="icon-rs mail tooltips" title="Laissez-nous un message…"></a></li>
+		{% if app.session.get('version').resosociaux['twitter'] is defined %}
+		<li class="straight"><a href="{{ app.session.get('version').resosociaux['twitter'] }}" class="icon-rs twitter tooltips URLext" title="Suivez-nous sur Twitter…"></a></li>
+		{% endif %}
+		{% if app.session.get('version').resosociaux['google+'] is defined %}
+		<li class="straight"><a href="{{ app.session.get('version').resosociaux['google+'] }}" class="icon-rs google tooltips URLext" title="Suivez-nous sur Google+…"></a></li>
+		{% endif %}
+		{% if app.session.get('version').resosociaux['facebook'] is defined %}
+		<li class="straight"><a href="{{ app.session.get('version').resosociaux['facebook'] }}" class="icon-rs facebook tooltips URLext" title="Suivez-nous sur Facebook…"></a></li>
+		{% endif %}
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		<li><a href="{{ path('fos_user_security_logout') }}">Quitter</a></li>
+		{% else %}
+		<li><a href="{{ path('fos_user_security_login') }}">Mon compte</a></li>
+		{% endif %}
+		<li><a href="{{ url('acme_site_pageweb', {pagewebSlug: 'contact'}) }}">Contact</a></li>
+		<li><a href="{{ url('acme_site_pageweb', {pagewebSlug: 'legalite'}) }}">Légalité</a></li>
+	</ul>
+	<div class="visible-xs list-group">
+		{% if app.session.get('version').resosociaux['facebook'] is defined %}
+		<a href="{{ app.session.get('version').resosociaux['facebook'] }}" class="list-group-item URLext"><span class="glyphicon glyphicon-globe"></span> Facebook</a>
+		{% endif %}
+		{% if app.session.get('version').resosociaux['twitter'] is defined %}
+		<a href="{{ app.session.get('version').resosociaux['twitter'] }}" class="list-group-item URLext"><span class="glyphicon glyphicon-globe"></span> Twitter</a>
+		{% endif %}
+		{% if app.session.get('version').resosociaux['google+'] is defined %}
+		<a href="{{ app.session.get('version').resosociaux['google+'] }}" class="list-group-item URLext"><span class="glyphicon glyphicon-globe"></span> Google+</a>
+		{% endif %}
+		<a href="#" class="list-group-item"><span class="glyphicon glyphicon-comment"></span> Mail</a>
+	</div>
+	<div class="visible-xs list-group">
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		<a href="{{ path('fos_user_security_logout') }}" class="list-group-item"><span class="glyphicon glyphicon-book"></span> Quitter</a>
+		{% else %}
+		<a href="{{ path('fos_user_security_login') }}" class="list-group-item"><span class="glyphicon glyphicon-book"></span> Mon compte</a>
+		{% endif %}
+		<a href="{{ url('acme_site_pageweb', {pagewebSlug: 'contact'}) }}" class="list-group-item"><span class="glyphicon glyphicon-envelope"></span> Contact</a>
+		<a href="{{ url('acme_site_pageweb', {pagewebSlug: 'legalite'}) }}" class="list-group-item"><span class="glyphicon glyphicon-book"></span> Légalité</a>
+	</div>
+</footer>

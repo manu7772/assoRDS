@@ -1,0 +1,36 @@
+{% extends "AcmeGroupSiteBundle::sitePage.html.twig" %}
+{% block title %}{{ pageweb.title|raw }} - {{ parent() }}{% endblock %}
+{% block header %}{{ parent() }}{% endblock header %}
+
+{% block mainwindow %}
+<div id="pagedroite" class="topdecal12">
+	<h1>{{ pageweb.titreh1|raw }}</h1>
+	<address>
+		<h3><strong>{{ societe.nom }}</strong></h3>
+		{{ societe.adresse.adresse }}<br>
+		{{ societe.adresse.cp }} {{ societe.adresse.ville }}
+		<br>
+		<br>
+		<abbr title="Téléphone">Téléphone :</abbr> {{ societe.telpublic }}
+		<br>
+		<br>
+		<abbr title="Email">Email :</abbr> <a href="mailto:{{ societe.email }}">{{ societe.email }}</a>
+		<br>
+		<br>
+		{% if societe.resofacebook is not null %}
+		<abbr title="Lien Facebook">Page Facebook :</abbr> <a href="{{ societe.resofacebook }}" class="URLext">{{ societe.resofacebook }}</a>
+		{% endif %}
+		{% if societe.resotwitter is not null %}
+		<abbr title="Lien Twitter">Page Twitter :</abbr> <a href="{{ societe.resotwitter }}" class="URLext">{{ societe.resotwitter }}</a>
+		{% endif %}
+		{% if societe.resogoogleplus is not null %}
+		<abbr title="Lien Google">Page Google :</abbr> <a href="{{ societe.resogoogleplus }}" class="URLext">{{ societe.resogoogleplus }}</a>
+		{% endif %}
+	</address>
+	{% if pageweb.code is not null and pageweb.code != "" %}
+	<p>{{ magnifyText(pageweb.code)|raw }}</p>
+	{% endif %}
+</div>
+{% endblock mainwindow %}
+
+{% block boutondon %}{% endblock boutondon %}

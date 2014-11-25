@@ -1,0 +1,32 @@
+{% extends "AcmeGroupSiteBundle::sitePage.html.twig" %}
+{% block title %}{{ pageweb.title|raw }} - {{ parent() }}{% endblock %}
+{% block header %}{{ parent() }}{% endblock header %}
+
+{% block mainwindow %}
+<div id="pagedroite" class="row topdecal12 bottomdecal30">
+	<!-- <h1>{{ pageweb.titreh1|raw }}</h1> -->
+	{% if pageweb.code is not null and pageweb.code != "" %}
+	<p>{{ magnifyText(pageweb.code)|raw }}</p>
+	{% endif %}
+	{% for partenaire in partenaires %}
+	<div class="bloc-partenaire-container col-lg-3 col-md-4 col-sm-6 col-xs-12">
+		<a href="{{ url('acme_site_pageweb', {pagewebSlug: 'un-partenaire', categorieSlug: 'nos-partenaires', pagedata: partenaire.slug }) }}" title="Voir en détail {{ partenaire.nom }}">
+			<div class="bloc-partenaire">
+				<h3>{{ magnifyText(partenaire.nom)|raw }}</h3>
+				<div class="logo">
+				{% if partenaire.logo is not null %}
+					<img src="{{ asset('images/logo/' ~ partenaire.logo.fichierNom) }}" alt="logo {{ partenaire.nom }}" style="{{ imgVolume(partenaire.logo, 10, 150, 64) }}">
+				{% endif %}
+				</div>
+				{% if partenaire.subvention is not null and partenaire.subvention > 0 %}
+				<p class="subvention">Soutien financier : {{ partenaire.subvention|raw }} €</p>
+				{% else %}
+				<p class="subvention">Soutien matériel et logistique</p>
+				{% endif %}
+				<p class="descriptif">{{ magnifyText(partenaire.accroche)|raw }}</p>
+			</div>
+		</a>
+	</div>
+	{% endfor %}
+</div>
+{% endblock mainwindow %}

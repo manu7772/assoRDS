@@ -1,0 +1,17 @@
+<rss version="2.0">
+	<channel>
+		<title>Informations {{ app.session.get('version').nom }}</title>
+		<link>{{ app.session.get('version').domaine }}</link>
+		<description>Flux RSS des actualités {{ app.session.get('version').nom }}</description>
+		<language>{{ app.request.locale }}</language>
+		{% for event in evenement %}
+		<item>
+			<title>{{ event.nom }}</title>
+			<author>{{ app.session.get('version').domaine }}</author>
+			<pubDate>{{ intervalDateFR(event.datedebut, event.datefin, false)|capitalize|raw }}</pubDate>
+			<link>{{ app.session.get('version').domaine }}</link>
+			<description>{{ event.descriptif }}</description>
+		</item>
+		{% endfor %}
+	</channel>
+</rss>

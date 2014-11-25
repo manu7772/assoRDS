@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: assoRDS2014
+    database_user: root
+    database_password: root
+    mailer_transport: gmail
+    mailer_host: null
+    mailer_user: manu7772
+    mailer_password: 'Xylanthropus Tetaedrus 241'
+    locale: fr
+    secret: ee4a65a1d923e10a4522d10f238a95a110a
