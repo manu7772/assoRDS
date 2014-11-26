@@ -33,7 +33,7 @@ class partenaire extends partenaireBase {
      *
      * @ORM\Column(name="subvention", type="integer")
      */
-    private $subvention;
+    private $subvention = 0;
 
     /**
      * @ORM\ManyToOne(targetEntity="AcmeGroup\LaboBundle\Entity\typePartenaire")
@@ -41,11 +41,6 @@ class partenaire extends partenaireBase {
      */
     protected $typePartenaire;
 
-
-    public function __construct() {
-    	PARENT::__construct();
-        $this->subvention = 0;
-    }
 
     /**
      * Set subvention
