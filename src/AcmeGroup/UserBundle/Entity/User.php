@@ -182,7 +182,7 @@ class User extends BaseUser {
 	private $richtexts;
 
 	/**
-	 * @ORM\OneToOne(targetEntity="AcmeGroup\LaboBundle\Entity\membre", mappedBy="propUser")
+	 * @ORM\OneToOne(targetEntity="AcmeGroup\LaboBundle\Entity\membre", inversedBy="User")
 	 * @ORM\JoinColumn(nullable=true, unique=true)
 	 */
 	private $membre;

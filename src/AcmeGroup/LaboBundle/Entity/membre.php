@@ -161,12 +161,6 @@ class membre {
 	 */
 	private $versions;
 
-	/**
-	 * @ORM\ManyToOne(targetEntity="AcmeGroup\UserBundle\Entity\User", inversedBy="membre")
-	 * @ORM\JoinColumn(nullable=true, unique=true)
-	 */
-	protected $propUser;
-
 
 
 	public function __construct() {
