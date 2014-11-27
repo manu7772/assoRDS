@@ -1100,12 +1100,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/manu7772/labo.git",
-                "reference": "e13c7a44e4b65d57566d802d0446ee69b80eec5e"
+                "reference": "08d63400a7ca7417f2327ed1ec8eb1f8f6f0e366"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/manu7772/labo/zipball/e13c7a44e4b65d57566d802d0446ee69b80eec5e",
-                "reference": "e13c7a44e4b65d57566d802d0446ee69b80eec5e",
+                "url": "https://api.github.com/repos/manu7772/labo/zipball/08d63400a7ca7417f2327ed1ec8eb1f8f6f0e366",
+                "reference": "08d63400a7ca7417f2327ed1ec8eb1f8f6f0e366",
                 "shasum": ""
             },
             "require": {
@@ -1135,7 +1135,7 @@
                 "labo",
                 "testmanu"
             ],
-            "time": "2014-11-23 20:43:29"
+            "time": "2014-11-27 13:30:54"
         },
         {
             "name": "leafo/lessphp",
