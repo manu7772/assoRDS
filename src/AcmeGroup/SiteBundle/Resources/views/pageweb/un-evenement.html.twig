@@ -42,7 +42,7 @@
 				{% if part.logo is not null %}
 				<img class="logo-partenaire-event-detail img-rounded" src="{{ asset('images/logo/' ~ part.logo.fichierNom) }}" />
 				{% endif %}
-				<p>{{ part.nom }}</p>
+				<p><a href="{{ url('acme_site_pageweb', {pagewebSlug: 'un-partenaire', categorieSlug: 'nos-partenaires', pagedata: part.slug }) }}" title="Voir {{ part.nom }}">{{ part.nom }}</a></p>
 				{% endfor %}
 			</div>
 			{% endif %}
@@ -55,7 +55,7 @@
 	<!-- Évènement introuvable -->
 	<div class="alert alert-warning alert-dismissible" role="alert">
 		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		<strong>Information non trouvée</strong> le lien que vous avez demandé n'est pas présent sur le site.
+		<strong>Évènement non trouvée</strong> le lien d'évènement que vous avez demandé n'est pas présent sur le site.
 	</div>
 	{% endif %}
 </div>

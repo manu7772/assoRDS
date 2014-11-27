@@ -29,6 +29,7 @@ class LaboController extends LaboCtrl {
 		}
 		$data['entity']['typeRichtext'] = $this->get('acmeGroup.texttools')->typeRichtextList();
 		$data['entity']['typeEvenement'] = $this->get('acmeGroup.entities')->defineEntity('typeEvenement')->getRepo()->findAll();
+		$data['entity']['typePartenaire'] = $this->get('acmeGroup.entities')->defineEntity('typePartenaire')->getRepo()->findAll();
 		return $this->render(':common:navbar.html.twig', $data);
 	}
 

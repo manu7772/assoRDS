@@ -17,16 +17,6 @@ class SiteController extends Controller {
 
 	public function indexAction() {
 		$this->get('acmeGroup.aelog')->createNewLogAuto();
-		// $data = $this->get("session")->get('version');
-		// génération de la page
-		// $mailer = $this->get('mailer');
-		// $message = \Swift_Message::newInstance()
-		// 	->setSubject("Test de mail")
-		// 	->setContentType('text/html')
-		// 	->setFrom('noreply@asso.com')
-		// 	->setTo('manu7772@gmail.com')
-		// 	->setBody("bonjour");
-		// $rmail = $mailer->send($message);
 		return $this->render($this->verifVersionPage("Site:index"));
 	}
 
@@ -53,93 +43,93 @@ class SiteController extends Controller {
 		return $this->dispatch($pagewebSlug, $pagedata);
 	}
 
-	/**
-	 * detailEventAction
-	 * Page de détails sur un évènement $eventSlug
-	 * @param string $eventSlug
-	 * @param string $categorieSlug
-	 * @return Response
-	 */
-	public function detailEventAction($eventSlug, $categorieSlug = null) {
-		// Récupération de l'actu
-		$event = $this->get("acmeGroup.entities")->defineEntity("evenement")->getRepo()->findBySlug($eventSlug);
-		if(count($event) > 0) {
-			$data['event'] = $event[0];
-		} else $data['event'] = null;
-		// génération de la page
-		return $this->render($this->verifVersionPage("pageweb:detailEvent"), $data);
-	}
+	// /**
+	//  * detailEventAction
+	//  * Page de détails sur un évènement $eventSlug
+	//  * @param string $eventSlug
+	//  * @param string $categorieSlug
+	//  * @return Response
+	//  */
+	// public function detailEventAction($eventSlug, $categorieSlug = null) {
+	// 	// Récupération de l'actu
+	// 	$event = $this->get("acmeGroup.entities")->defineEntity("evenement")->getRepo()->findBySlug($eventSlug);
+	// 	if(count($event) > 0) {
+	// 		$data['event'] = $event[0];
+	// 	} else $data['event'] = null;
+	// 	// génération de la page
+	// 	return $this->render($this->verifVersionPage("pageweb:detailEvent"), $data);
+	// }
 
-	/**
-	 * valeursAction
-	 * Page de détails sur un évènement $eventSlug
-	 * @param string $eventSlug
-	 * @param string $categorieSlug
-	 * @return Response
-	 */
-	public function valeursAction($categorieSlug = null) {
-		$pageweb = $this->get("acmeGroup.pageweb")->defineEntity("pageweb");
-		$page = $pageweb->getRepo()->findBySlug("l-association");
-		$data['page'] = $page[0];
-		// génération de la page
-		return $this->render($this->verifVersionPage($data['page']->getFichierhtml()), $data);
-	}
+	// /**
+	//  * valeursAction
+	//  * Page de détails sur un évènement $eventSlug
+	//  * @param string $eventSlug
+	//  * @param string $categorieSlug
+	//  * @return Response
+	//  */
+	// public function valeursAction($categorieSlug = null) {
+	// 	$pageweb = $this->get("acmeGroup.pageweb")->defineEntity("pageweb");
+	// 	$page = $pageweb->getRepo()->findBySlug("l-association");
+	// 	$data['page'] = $page[0];
+	// 	// génération de la page
+	// 	return $this->render($this->verifVersionPage($data['page']->getFichierhtml()), $data);
+	// }
 
-	public function equipeAction($categorieSlug = null) {
-		$data = array();
-		$data['categorie'] = $this->get("acmeGroup.categorie")->getRepo()->findBySlug($categorieSlug);
-		$data['page'] = $data['categorie']->getPage();
-		if(is_object($data['page'])) {
-			$html = $data['page']->getFichierhtml();
-			// données sur l'équipe
-			switch ($categorieSlug) {
-				case 'ensemble':
-					$data['data'] = null;
-					break;
-				case 'trombinoscope':
-					$data['data'] = null;
-					break;
-				case 'bureau':
-					$data['data'] = null;
-					break;
-				case 'benevoles':
-					$data['data'] = null;
-					break;
-				default: // "notre-equipe" et autres…
-					$data['data'] = null;
-					break;
-			}
-		} else {
-			// page non trouvée : page par défaut (no-page)
-			$page = $this->get("acmeGroup.pageweb")->getRepo()->findBySlug("no-page");
-			$data['page'] = $page[0];
-			$html = $data['page']->getFichierhtml();
-		}
-		// génération de la page
-		return $this->render($this->verifVersionPage($html), $data);
-	}
+	// public function equipeAction($categorieSlug = null) {
+	// 	$data = array();
+	// 	$data['categorie'] = $this->get("acmeGroup.categorie")->getRepo()->findBySlug($categorieSlug);
+	// 	$data['page'] = $data['categorie']->getPage();
+	// 	if(is_object($data['page'])) {
+	// 		$html = $data['page']->getFichierhtml();
+	// 		// données sur l'équipe
+	// 		switch ($categorieSlug) {
+	// 			case 'ensemble':
+	// 				$data['data'] = null;
+	// 				break;
+	// 			case 'trombinoscope':
+	// 				$data['data'] = null;
+	// 				break;
+	// 			case 'bureau':
+	// 				$data['data'] = null;
+	// 				break;
+	// 			case 'benevoles':
+	// 				$data['data'] = null;
+	// 				break;
+	// 			default: // "notre-equipe" et autres…
+	// 				$data['data'] = null;
+	// 				break;
+	// 		}
+	// 	} else {
+	// 		// page non trouvée : page par défaut (no-page)
+	// 		$page = $this->get("acmeGroup.pageweb")->getRepo()->findBySlug("no-page");
+	// 		$data['page'] = $page[0];
+	// 		$html = $data['page']->getFichierhtml();
+	// 	}
+	// 	// génération de la page
+	// 	return $this->render($this->verifVersionPage($html), $data);
+	// }
 
-	public function partenairesAction($partenaireSlug) {
-		$page = $this->get("acmeGroup.pageweb")->getRepo()->findBySlug("nos-partenaires");
-		if($partenaireSlug === "liste") {
-			// liste des partenaires
-			$data["partenaires"] = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findAll();
-			$data["partenaire"] = "no";
-		} else {
-			$data["partenaires"] = "no";
-			$part = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findBySlug($partenaireSlug);
-			if(count($part) > 0) {
-				// un partenaire
-				$data["partenaire"] = $part[0];
-			} else {
-				// partenaire(s) non trouvé(s)
-				$data["partenaire"] = $data["partenaires"] = "no";
-			}
-		}
-		$data['page'] = $page[0];
-		// génération de la page
-		return $this->render($this->verifVersionPage($data['page']->getFichierhtml()), $data);
-	}
+	// public function partenairesAction($partenaireSlug) {
+	// 	$page = $this->get("acmeGroup.pageweb")->getRepo()->findBySlug("nos-partenaires");
+	// 	if($partenaireSlug === "liste") {
+	// 		// liste des partenaires
+	// 		$data["partenaires"] = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findAll();
+	// 		$data["partenaire"] = "no";
+	// 	} else {
+	// 		$data["partenaires"] = "no";
+	// 		$part = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findBySlug($partenaireSlug);
+	// 		if(count($part) > 0) {
+	// 			// un partenaire
+	// 			$data["partenaire"] = $part[0];
+	// 		} else {
+	// 			// partenaire(s) non trouvé(s)
+	// 			$data["partenaire"] = $data["partenaires"] = "no";
+	// 		}
+	// 	}
+	// 	$data['page'] = $page[0];
+	// 	// génération de la page
+	// 	return $this->render($this->verifVersionPage($data['page']->getFichierhtml()), $data);
+	// }
 
 
 
@@ -187,6 +177,14 @@ class SiteController extends Controller {
 						reset($part);
 						$data["partenaire"] = current($part);
 					} else $data["partenaire"] = false;
+					break;
+				case 'un-evenement':
+					// $pagedata = slug de l'évènement
+					$event = $this->get("acmeGroup.events")->getRepo()->findBySlug($pagedata);
+					if(count($event) > 0) {
+						reset($event);
+						$data["event"] = current($event);
+					} else $data["event"] = false;
 					break;
 				
 				default:

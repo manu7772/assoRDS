@@ -40,8 +40,14 @@
 				</ul>
 			</li>
 			<li class="dropdown">
-				<a href="{{ url('labo_page_User', {action: 'liste'}) }}" class="dropdown-toggle" data-toggle="dropdown">Utilisateurs<b class="caret"></b></a>
+				<a href="{{ url('labo_home') }}" class="dropdown-toggle" data-toggle="dropdown">Tiers<b class="caret"></b></a>
 				<ul class="dropdown-menu">
+					<li class="dropdown-header">Partenaires</li>
+					{% for typePartenaire in entity.typePartenaire %}
+					<li><a href="{{ url('labo_page_entite', {action: 'liste', classEntite: Url_encode('partenaire@typePartenaire:nom:' ~ typePartenaire.nom) }) }}">{{ typePartenaire.nom|capitalize }}</a></li>
+					{% endfor %}
+					<li class="divider"></li>
+					<li class="dropdown-header">Utilisateurs</li>
 					<li><a href="{{ url('labo_page_User', {action: 'liste'}) }}">Tous utilisateurs</a></li>
 					<li><a href="{{ url('labo_page_User', {action: 'liste', role: 'ROLE_USER'}) }}">Inscrits</a></li>
 					<li><a href="{{ url('labo_page_User', {action: 'liste', role: 'ROLE_EDITOR'}) }}">Editeurs</a></li>
@@ -49,13 +55,12 @@
 					{% if is_granted("ROLE_SUPER_ADMIN") %}
 					<li class="divider"></li>
 					<li><a href="{{ url('labo_page_User', {action: 'liste', role: 'ROLE_SUPER_ADMIN'}) }}">Super Admin</a></li>
-					<li class="divider"></li>
 					<li><a href="{{ url('labo_check_database', {'entite': 'User'}) }}">Checking utilisateurs</a></li>
 					{% endif %}
 				</ul>
 			</li>
 			<li class="dropdown">
-				<a href="{{ url('labo_working') }}" class="dropdown-toggle" data-toggle="dropdown">Textes <b class="caret"></b></a>
+				<a href="{{ url('labo_home') }}" class="dropdown-toggle" data-toggle="dropdown">Textes <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="{{ url('labo_page_entite', {classEntite: Url_encode('categorie')}) }}">Catégories</a></li>
 					<li class="divider"></li>
@@ -75,7 +80,7 @@
 				</ul>
 			</li>
 			<li class="dropdown">
-				<a href="{{ url('labo_working') }}" class="dropdown-toggle" data-toggle="dropdown">Medias <b class="caret"></b></a>
+				<a href="{{ url('labo_home') }}" class="dropdown-toggle" data-toggle="dropdown">Medias <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="{{ url('labo_page_entite', {action: 'liste', classEntite: Url_encode('collection')}) }}">Diaporamas</a></li>
 					<li><a href="{{ url('labo_page_imageByType', {classEntite: Url_encode('image@typeImages:nom:diaporama')}) }}"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Images diaporama</a></li>
@@ -85,6 +90,10 @@
 					<li><a href="{{ url('labo_page_entite', {classEntite: Url_encode('fichierPdf')}) }}"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Fichiers PDF</a></li>
 					<li class="divider"></li>
 					<li><a href="{{ url('labo_page_entite', {action: 'liste', classEntite: Url_encode('tag')}) }}"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Tags</a></li>
+					<li class="divider"></li>
+					<li class="dropdown-header">Autres images</li>
+					<li><a href="{{ url('labo_page_imageByType', {classEntite: Url_encode('image@typeImages:nom:universel')}) }}"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Images universelles</a></li>
+					<li><a href="{{ url('labo_page_imageByType', {classEntite: Url_encode('image@typeImages:nom:logo')}) }}"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Images logos</a></li>
 					{# if is_granted("ROLE_SUPER_ADMIN") #}
 					<li class="divider"></li>
 					<li><a href="{{ url('labo_page_imageByType', {classEntite: Url_encode('image')}) }}"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Toutes images</a></li>
@@ -92,7 +101,7 @@
 				</ul>
 			</li>
 			<li class="dropdown">
-				<a href="{{ url('labo_working') }}" class="dropdown-toggle" data-toggle="dropdown">Paramètres <b class="caret"></b></a>
+				<a href="{{ url('labo_home') }}" class="dropdown-toggle" data-toggle="dropdown">Paramètres <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="{{ url('labo_page_entite', {classEntite: Url_encode('statut')}) }}">Statuts</a></li>
 					<li><a href="{{ url('labo_page_entite', {classEntite: Url_encode('typeEvenement')}) }}">Types d'évènements</a></li>
@@ -103,7 +112,7 @@
 			</li>
 			{% if is_granted("ROLE_SUPER_ADMIN") %}
 			<li class="dropdown">
-				<a href="{{ url('labo_working') }}" class="dropdown-toggle" data-toggle="dropdown">Super Admin <b class="caret"></b></a>
+				<a href="{{ url('labo_home') }}" class="dropdown-toggle" data-toggle="dropdown">Super Admin <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="{{ url('labo_page_entite', {classEntite: Url_encode('parametre')}) }}">Paramètres</a></li>
 					<li class="divider"></li>
@@ -129,7 +138,7 @@
 				</ul>
 			</li>
 			<li class="dropdown">
-				<a href="{{ url('labo_working') }}" class="dropdown-toggle" data-toggle="dropdown">Random data <b class="caret"></b></a>
+				<a href="{{ url('labo_home') }}" class="dropdown-toggle" data-toggle="dropdown">Random data <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="{{ url('labo_generate_random_data', {'entite': 'facture'}) }}">Générer factures</a></li>
 				</ul>

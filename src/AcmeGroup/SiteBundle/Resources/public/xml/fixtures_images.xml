@@ -40,13 +40,13 @@ noms de fichiers multiples : séparer par "|" (ex. texte="import@txt::intro.txt|
 	<categorie nom="diapo3" descriptif="Rejoignez-nous !" typeImage__nom="universel|ambiance|diaporama" fichierOrigine="diapo0.jpg" version__nom="Rayon de Soleil|Sonnenschein" />
 	<!-- <categorie nom="diapo4" descriptif="" typeImage__nom="universel|ambiance|diaporama" fichierOrigine="diapo3.jpg" version__nom="Rayon de Soleil|Sonnenschein" /> -->
 
-	<categorie nom="DSC_0090" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="DSC_0090.jpeg" />
-	<categorie nom="DSC_0116" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="DSC_0116.jpeg" />
-	<categorie nom="IMG_1022" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="IMG_1022.jpeg" />
-	<categorie nom="IMG_2316" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="IMG_2316.jpeg" />
-	<categorie nom="LouAnne" descriptif="Lou-Anne" typeImage__nom="universel|ambiance|article" fichierOrigine="Edito-Actualites_html_m1e496dc5.jpg" />
-	<categorie nom="Site001" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="site_capture_01.png" />
-	<categorie nom="Cyclo Club remise maillot" descriptif="" typeImage__nom="universel|ambiance|article" fichierOrigine="CycloClubremiseMaillot.jpg" />
+	<categorie nom="DSC_0090" descriptif="" typeImage__nom="universel|ambiance|evenement" fichierOrigine="DSC_0090.jpeg" />
+	<categorie nom="DSC_0116" descriptif="" typeImage__nom="universel|ambiance|evenement" fichierOrigine="DSC_0116.jpeg" />
+	<categorie nom="IMG_1022" descriptif="" typeImage__nom="universel|ambiance|evenement" fichierOrigine="IMG_1022.jpeg" />
+	<categorie nom="IMG_2316" descriptif="" typeImage__nom="universel|ambiance|evenement" fichierOrigine="IMG_2316.jpeg" />
+	<categorie nom="LouAnne" descriptif="Lou-Anne" typeImage__nom="universel|ambiance|evenement" fichierOrigine="Edito-Actualites_html_m1e496dc5.jpg" />
+	<categorie nom="Site001" descriptif="" typeImage__nom="universel|ambiance|evenement" fichierOrigine="site_capture_01.png" />
+	<categorie nom="Cyclo Club remise maillot" descriptif="" typeImage__nom="universel|ambiance|evenement" fichierOrigine="CycloClubremiseMaillot.jpg" />
 </categories>
 
 
