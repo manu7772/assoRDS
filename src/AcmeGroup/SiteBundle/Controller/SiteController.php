@@ -160,6 +160,7 @@ class SiteController extends Controller {
 					// $pagedata['sens'] = 'ASC' ou 'DESC' ('DESC' par défaut)
 					// *** $pagedata['datedebut'] = datetime date (null par défaut = toutes)
 					// *** $pagedata['datefin'] = datetime date (null par défaut = toutes)
+					$data['events'] = array();
 					$limit = null;
 					if(isset($pagedata['limit']) && $pagedata['limit'] !== null) {
 						$limit = intval($pagedata['limit']);
@@ -170,7 +171,11 @@ class SiteController extends Controller {
 							$sens = strtoupper($pagedata['sens']);
 						}
 					}
-					$data['events'] = $this->get("acmeGroup.events")->getRepo()->findFuturs('actualites', $sens, $limit);
+					$data['events']['futurevents'] = $this->get("acmeGroup.events")->getRepo()->findFuturs('actualites', $sens, $limit);
+					// si aucun résultat… retrouve les 3 actualités passées les plus récentes
+					if(count($data['events']['futurevents']) < 1) {
+						$data['events']['pastevents'] = $this->get("acmeGroup.events")->getRepo()->findPasses('actualites', 'DESC', 3);
+					}
 					break;
 				case 'nos-partenaires':
 					$data["partenaires"] = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findAll();

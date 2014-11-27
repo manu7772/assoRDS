@@ -5,14 +5,12 @@
 {% block mainwindow %}
 <div id="pagedroite" class="topdecal12 bottomdecal30">
 	<h1>{{ pageweb.titreh1|raw }}</h1>
-	{% for event in events %}
-	{% if loop.index0 < 1 %}
+	{% for timevent in ['futurevents', 'pastevents'] %}
+	{% if loop.index == 1 %}
 		{% set taille = 200 %}
 		{% set sh2 = "high" %}
-	{% else %}
-		{% set taille = 80 %}
-		{% set sh2 = "" %}
 	{% endif %}
+	{% for event in events[timevent] %}
 	<div class="bloc-event-list">
 		<div class="col-xs-3 visible-xs"></div>
 		<div class="event-bloc-image col-md-3 col-xs-6">
@@ -37,6 +35,9 @@
 		</div>
 		<div style="height:0px;clear:both;"></div>
 	</div>
+	{% set taille = 80 %}
+	{% set sh2 = "" %}
+	{% endfor %}
 	{% endfor %}
 </div>
 {% endblock mainwindow %}
