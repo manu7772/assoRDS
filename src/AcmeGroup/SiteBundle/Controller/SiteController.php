@@ -35,11 +35,12 @@ class SiteController extends Controller {
 	}
 
 	public function pagewebAction($categorieSlug = "web", $pagewebSlug = null, $pagedata = null) {
+		$this->get('acmeGroup.aelog')->createNewLogAuto();
+		// JSon décode et vérifie si c'était bien des données au format JSon (sinon les gardes telles quelles)
 		$pd = json_decode($pagedata, true);
 		if($pd !== null) $pagedata = $pd;
-		// echo("1 : ");var_dump($pagedata);echo("<br />");
-		// echo("2 : ");var_dump(json_decode($pagedata, true));echo("<br />");echo("<br />");
-		$this->get('acmeGroup.aelog')->createNewLogAuto();
+		// si la page appélée vient d'une catégorie (et non d'une pageweb)
+		// et qu'aucune pageweb n'est précisée : on retrouve la pageweb de la catégorie
 		if(($categorieSlug !== "web") && ($pagewebSlug === null)) {
 			// récupération de $pagewebSlug selon $categorieSlug
 			$categorie = $this->get("acmeGroup.categorie")->getRepo()->findBySlug($categorieSlug);
@@ -154,13 +155,28 @@ class SiteController extends Controller {
 					$data['societe'] = $this->get("acmeGroup.version")->getRepo()->find($Tidx['id']);
 					break;
 				case 'actualites':
-					$data['events'] = $this->get("acmeGroup.events")->getRepo()->findFuturs('actualites');
+					// $pagedata = null
+					// $pagedata['limit'] = nombre d'actualités demandées (null par défaut = toutes)
+					// $pagedata['sens'] = 'ASC' ou 'DESC' ('DESC' par défaut)
+					// *** $pagedata['datedebut'] = datetime date (null par défaut = toutes)
+					// *** $pagedata['datefin'] = datetime date (null par défaut = toutes)
+					$limit = null;
+					if(isset($pagedata['limit']) && $pagedata['limit'] !== null) {
+						$limit = intval($pagedata['limit']);
+					}
+					$sens = 'DESC';
+					if(isset($pagedata['sens'])) {
+						if(in_array(strtoupper($pagedata['sens']), array("ASC", "DESC"))) {
+							$sens = strtoupper($pagedata['sens']);
+						}
+					}
+					$data['events'] = $this->get("acmeGroup.events")->getRepo()->findFuturs('actualites', $sens, $limit);
 					break;
 				case 'nos-partenaires':
 					$data["partenaires"] = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findAll();
 					break;
 				case 'un-partenaire':
-					// var_dump($pagedata);
+					// $pagedata = slug du partenaire
 					$part = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findBySlug($pagedata);
 					if(count($part) > 0) {
 						reset($part);
