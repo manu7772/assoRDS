@@ -8,7 +8,8 @@
 		<span class="hidden-xs">
 			<p>{{ texte|raw }}
 				{% if newshome.texte|length != texte|length %}
-				<a href="{{ url('acme_site_detailEvent', {eventSlug: newshome.slug, typeEvent: newshome.typeEvenement.slug}) }}" style="float:right;">…lire la suite</a>
+				<br>
+				<a class="fancymd badge" href="{{ url('acme_site_pagemodale', {pagewebSlug: 'un-evenement', pagedata: newshome.slug }) }}" style="float:right;">…lire la suite</a>
 				<div style="clear:both;height:0px;"></div>
 				{% endif %}
 			</p>

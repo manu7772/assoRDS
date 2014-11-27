@@ -1,42 +1,18 @@
-{% extends "AcmeGroupSiteBundle::sitePage.html.twig" %}
-{% block title %}
-{% if event is not null %}
-	{{ parent() }} - {{ event.nom|raw }}
-{% else %}
-	{{ parent() }} - Information non trouvée
-{% endif %}
-{% endblock %}
-{% block header %}{{ parent() }}{% endblock header %}
-
-{% block mainwindow %}
-<div id="pagedroite" class="topdecal12 bottomdecal30">
+<div>
 	{% if event is not null %}
-
-	{% set widbloc = "col-md-8 col-xs-12" %}
-
-	{% set stop = 0 %}
-	{% for partenaire in event.partenaires %}
-		{% if partenaire.logo is not null and stop == 0 %}{% set stop = 1 %}{% endif %}
-	{% endfor %}
-	{% if stop == 0 %}
-		{% set widbloc = "col-lg-10" %}
-		<!-- aucun logo/image -->
-	{% endif %}
-
 	<div class="detail-event event-{{ event.typeEvenement.slug }}">
-		<h2 class="visible-xs">{{ magnifyText(event.nom)|raw }}</h2>
-		<div class="col-md-4 col-xs-12">
-			{{ include('AcmeGroupSiteBundle:blocs:imageEvent.html.twig') }}
-		</div>
-		<div class="{{ widbloc|raw }}">
-			<h2 class="hidden-xs">{{ magnifyText(event.nom)|raw }}</h2>
+		<div class="col-md-12">
+			<h2>{{ magnifyText(event.nom)|raw }}</h2>
+			{% if event.image is not null %}
+			<img src="{{ asset('images/tn128/' ~ event.image.fichierNom) }}" alt="{{ event.nom|striptags }}" style="float:left;margin:2px 8px 8px 0px;">
+			{% endif %}
 			{% if event.datedebut != null or event.datefin != null %}
 			<p class="date">{{ intervalDateFR(event.datedebut, event.datefin, false, true)|raw }}</p>
 			{% endif %}
 			<p>{{ magnifyText(event.texte)|raw }}</p>
 			{% if event.partenaires is not null and event.partenaires|length > 0 %}
 			<br />
-			<div class="well col-lg-8 col-md-12">
+			<div class="well col-md-12">
 				<h3>Avec le soutien de :</h3>
 				{% for part in event.partenaires %}
 				{% if part.logo is not null %}
@@ -46,8 +22,6 @@
 				{% endfor %}
 			</div>
 			{% endif %}
-			<div style="height:0px;clear:both;"></div>
-			<span class="badge backpage" title="Revenir à la page précédente">Retour</span>
 		</div>
 		<div style="height:20px;clear:both;"></div>
 	</div>
@@ -59,4 +33,3 @@
 	</div>
 	{% endif %}
 </div>
-{% endblock mainwindow %}

@@ -27,8 +27,7 @@ class SiteController extends Controller {
 	public function pagewebAction($categorieSlug = "web", $pagewebSlug = null, $pagedata = null) {
 		$this->get('acmeGroup.aelog')->createNewLogAuto();
 		// JSon décode et vérifie si c'était bien des données au format JSon (sinon les gardes telles quelles)
-		$pd = json_decode($pagedata, true);
-		if($pd !== null) $pagedata = $pd;
+		$pagedata = $this->compileData($pagedata);
 		// si la page appélée vient d'une catégorie (et non d'une pageweb)
 		// et qu'aucune pageweb n'est précisée : on retrouve la pageweb de la catégorie
 		if(($categorieSlug !== "web") && ($pagewebSlug === null)) {
@@ -43,107 +42,28 @@ class SiteController extends Controller {
 		return $this->dispatch($pagewebSlug, $pagedata);
 	}
 
-	// /**
-	//  * detailEventAction
-	//  * Page de détails sur un évènement $eventSlug
-	//  * @param string $eventSlug
-	//  * @param string $categorieSlug
-	//  * @return Response
-	//  */
-	// public function detailEventAction($eventSlug, $categorieSlug = null) {
-	// 	// Récupération de l'actu
-	// 	$event = $this->get("acmeGroup.entities")->defineEntity("evenement")->getRepo()->findBySlug($eventSlug);
-	// 	if(count($event) > 0) {
-	// 		$data['event'] = $event[0];
-	// 	} else $data['event'] = null;
-	// 	// génération de la page
-	// 	return $this->render($this->verifVersionPage("pageweb:detailEvent"), $data);
-	// }
 
-	// /**
-	//  * valeursAction
-	//  * Page de détails sur un évènement $eventSlug
-	//  * @param string $eventSlug
-	//  * @param string $categorieSlug
-	//  * @return Response
-	//  */
-	// public function valeursAction($categorieSlug = null) {
-	// 	$pageweb = $this->get("acmeGroup.pageweb")->defineEntity("pageweb");
-	// 	$page = $pageweb->getRepo()->findBySlug("l-association");
-	// 	$data['page'] = $page[0];
-	// 	// génération de la page
-	// 	return $this->render($this->verifVersionPage($data['page']->getFichierhtml()), $data);
-	// }
-
-	// public function equipeAction($categorieSlug = null) {
-	// 	$data = array();
-	// 	$data['categorie'] = $this->get("acmeGroup.categorie")->getRepo()->findBySlug($categorieSlug);
-	// 	$data['page'] = $data['categorie']->getPage();
-	// 	if(is_object($data['page'])) {
-	// 		$html = $data['page']->getFichierhtml();
-	// 		// données sur l'équipe
-	// 		switch ($categorieSlug) {
-	// 			case 'ensemble':
-	// 				$data['data'] = null;
-	// 				break;
-	// 			case 'trombinoscope':
-	// 				$data['data'] = null;
-	// 				break;
-	// 			case 'bureau':
-	// 				$data['data'] = null;
-	// 				break;
-	// 			case 'benevoles':
-	// 				$data['data'] = null;
-	// 				break;
-	// 			default: // "notre-equipe" et autres…
-	// 				$data['data'] = null;
-	// 				break;
-	// 		}
-	// 	} else {
-	// 		// page non trouvée : page par défaut (no-page)
-	// 		$page = $this->get("acmeGroup.pageweb")->getRepo()->findBySlug("no-page");
-	// 		$data['page'] = $page[0];
-	// 		$html = $data['page']->getFichierhtml();
-	// 	}
-	// 	// génération de la page
-	// 	return $this->render($this->verifVersionPage($html), $data);
-	// }
-
-	// public function partenairesAction($partenaireSlug) {
-	// 	$page = $this->get("acmeGroup.pageweb")->getRepo()->findBySlug("nos-partenaires");
-	// 	if($partenaireSlug === "liste") {
-	// 		// liste des partenaires
-	// 		$data["partenaires"] = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findAll();
-	// 		$data["partenaire"] = "no";
-	// 	} else {
-	// 		$data["partenaires"] = "no";
-	// 		$part = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findBySlug($partenaireSlug);
-	// 		if(count($part) > 0) {
-	// 			// un partenaire
-	// 			$data["partenaire"] = $part[0];
-	// 		} else {
-	// 			// partenaire(s) non trouvé(s)
-	// 			$data["partenaire"] = $data["partenaires"] = "no";
-	// 		}
-	// 	}
-	// 	$data['page'] = $page[0];
-	// 	// génération de la page
-	// 	return $this->render($this->verifVersionPage($data['page']->getFichierhtml()), $data);
-	// }
+	public function pagemodaleAction($pagewebSlug, $pagedata = null) {
+		// return new Response("<h1 class='ital'>Bonjour vous !</h1>");
+		return new Response($this->dispatch($pagewebSlug, $this->compileData($pagedata), true));
+	}
 
 
-
-	protected function dispatch($pagewebSlug, $pagedata = null) {
+	protected function dispatch($pagewebSlug, $pagedata = null, $modale = null) {
 		$data = array();
 		$Tidx = $this->get("session")->get('version');
 		$page = $this->get("acmeGroup.pageweb")->getDynPages($pagewebSlug);
 		if(count($page) > 0) {
 			// page existe
-			$data['pageweb'] = $page[0];
+			reset($page);
+			$data['pageweb'] = current($page);
+			// orientation selon page web demandée :
 			switch ($pagewebSlug) {
+
 				case 'contact':
 					$data['societe'] = $this->get("acmeGroup.version")->getRepo()->find($Tidx['id']);
 					break;
+
 				case 'actualites':
 					// $pagedata = null
 					// $pagedata['limit'] = nombre d'actualités demandées (null par défaut = toutes)
@@ -167,17 +87,7 @@ class SiteController extends Controller {
 						$data['events']['pastevents'] = $this->get("acmeGroup.events")->getRepo()->findPasses('actualites', 'DESC', 3);
 					}
 					break;
-				case 'nos-partenaires':
-					$data["partenaires"] = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findAll();
-					break;
-				case 'un-partenaire':
-					// $pagedata = slug du partenaire
-					$part = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findBySlug($pagedata);
-					if(count($part) > 0) {
-						reset($part);
-						$data["partenaire"] = current($part);
-					} else $data["partenaire"] = false;
-					break;
+
 				case 'un-evenement':
 					// $pagedata = slug de l'évènement
 					$event = $this->get("acmeGroup.events")->getRepo()->findBySlug($pagedata);
@@ -186,11 +96,22 @@ class SiteController extends Controller {
 						$data["event"] = current($event);
 					} else $data["event"] = false;
 					break;
+
+				case 'nos-partenaires':
+					$data["partenaires"] = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findAll();
+					break;
+
+				case 'un-partenaire':
+					// $pagedata = slug du partenaire
+					$part = $this->get("acmeGroup.entities")->defineEntity('partenaire')->getRepo()->findBySlug($pagedata);
+					if(count($part) > 0) {
+						reset($part);
+						$data["partenaire"] = current($part);
+					} else $data["partenaire"] = false;
+					break;
 				
 				default:
 					// pages par défaut / Dont celles qui n'ont pas besoin de données
-					// $page = $this->get("acmeGroup.pageweb")->getDynPages("homepage");
-					// $data['pageweb'] = $page[0];
 					break;
 			}
 		} else {
@@ -198,9 +119,32 @@ class SiteController extends Controller {
 			$page = $this->get("acmeGroup.pageweb")->getDynPages("no-page");
 			$data['pageweb'] = $page[0];
 		}
-		return $this->render($this->verifVersionPage($data['pageweb']->getFichierhtml()), $data);
+		if($modale === true) {
+			// Traitement en modale
+			// on change le dossier d'origine du template par le dossier "fancy"
+			$data["modale"] = true;
+			// $file = explode(':', $this->verifVersionPage($data['pageweb']->getFichierhtml()), 2);
+			// if(count($file) > 1) $twigfile = "fancy:".$file[1];
+			// 	else $twigfile = "fancy:".$file[0];
+			$twigfile = str_replace("pageweb:", "fancy:", $this->verifVersionPage($data['pageweb']->getFichierhtml()));
+			return $this->renderView($twigfile, $data);
+		} else {
+			// Traitement normal entête HTML
+			$data["modale"] = false;
+			return $this->render($this->verifVersionPage($data['pageweb']->getFichierhtml()), $data);
+		}
 	}
 
+	/**
+	 * compile les données $pagedata passées dans pageweb (ou pagemodale)
+	 * @param string $pagedata
+	 * @return string/array selon le type de données
+	 */
+	private function compileData($pagedata) {
+		$pd = json_decode($pagedata, true);
+		if($pd !== null) $pagedata = $pd;
+		return $pagedata;
+	}
 
 	//////////////////////////
 	// BLOCS

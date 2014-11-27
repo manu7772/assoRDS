@@ -20,9 +20,8 @@
 		<div class="event-bloc-texte col-md-9 col-xs-12">
 			<div>
 				<h2 class="{{ sh2|raw }}">
-					<a href="{{ url('acme_site_pageweb', {pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Voir {{ event.nom }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp;
-					<!-- <a href="{{ url('acme_site_detailEvent', {eventSlug: event.slug, typeEvent: event.typeEvenement.slug}) }}" title="Voir la page {{ event.nom|raw }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp; -->
-					<a href="{{ url('acme_site_detailEvent', {eventSlug: event.slug, typeEvent: event.typeEvenement.slug}) }}" title="Coup d'œil rapide" class="badge hidden-xs">
+					<a href="{{ url('acme_site_pageweb', {categorieSlug: 'actualites', pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Voir {{ event.nom }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp;
+					<a class="fancymd badge hidden-xs" href="{{ url('acme_site_pagemodale', {pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Coup d'œil rapide" class="badge hidden-xs">
 						<span class="glyphicon glyphicon-eye-open"></span>
 					</a>
 				</h2>

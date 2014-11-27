@@ -187,7 +187,81 @@ jQuery(document).ready(function($) {
 	/* **************************************************** */
 	/* FANCYBOX
 	/* **************************************************** */
-	$('.fancybox').fancybox();
+
+	// FOND MODALES : légèrement bleuté
+	var backgroundFCY = 'rgba(220, 240, 255, 0.60)';
+
+	$('.fancybox').fancybox({
+		openEffect	: 'fade',
+		closeEffect	: 'fade',
+        padding     : 6,
+		helpers : {
+			overlay : {
+				css : {'background' : backgroundFCY}
+			}
+		}
+	});
+
+	$(".various").fancybox({
+		// fitToView	: true,
+		// closeBtn	: false,
+		maxWidth	: 640,
+		width		: 640,
+		// height		: '50%',
+		// autoSize	: true,
+		closeClick	: false,
+		openEffect	: 'fade',
+		closeEffect	: 'fade',
+		title 		: false,
+        padding     : 6,
+		helpers : {
+			overlay : {
+				css : {'background' : backgroundFCY}
+			}
+		}
+	}).trigger('click');
+
+	$(".youtubeFancy").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		fitToView	: true,
+		// width		: '70%',
+		// height		: '70%',
+		autoSize	: true,
+		closeClick	: false,
+		openEffect	: 'fade',
+		closeEffect	: 'fade',
+        padding     : 6,
+		helpers : {
+			overlay : {
+				css : {'background' : backgroundFCY}
+			}
+		}
+	});
+
+	$("a.fancymd").fancybox({ 			
+		hideOnContentClick		: true,
+		padding					: 4,
+		// overlayColor			:'#00FF00',
+		// overlayOpacity		: 0.7,
+		transitionIn			:'elastic',
+		transitionOut			:'elastic',
+		zoomSpeedIn				: 300,
+		zoomSpeedOut			: 300,
+		minWidth				: 400,
+		minHeight				: 300,
+		maxWidth				: 800,
+		maxHeight				: 600,
+		fitToView				: true,
+		// width				: 600,
+		// height				: 400,
+		type					:'ajax',
+		helpers : {
+			overlay : {
+				css : {'background' : backgroundFCY}
+			}
+		}
+	});
 
 
 	/* **************************************************** */
