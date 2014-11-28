@@ -24,7 +24,8 @@
         "sensio/distribution-bundle" : "2.3.*",
         "doctrine/doctrine-bundle" : "1.2.*",
         "leafo/lessphp": "*",
-        "labo/testmanu-bundle": "dev-master"
+        "labo/testmanu-bundle": "dev-master",
+        "ext-intl": "*"
     },
     "autoload" : {
         "psr-0" : {
