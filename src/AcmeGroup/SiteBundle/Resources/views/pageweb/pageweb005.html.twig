@@ -10,7 +10,7 @@
 		<div class="justify col-md-8 col-xs-12">
 			{% if pageweb.firstmedia is not null %}
 			<a href="{{ asset('images/original/' ~ pageweb.firstmedia.fichierNom) }}" title="{{ pageweb.firstmedia.nom }}" class="fancybox" data-fancybox-group="gallery{{ pageweb.id }}">
-				<img src="{{ asset('images/optim/' ~ pageweb.firstmedia.fichierNom) }}" alt="{{ pageweb.firstmedia.nom }}" class="img-thumbnail" style="float:left;margin:3px 8px 4px 0px;{{ imgVolume(pageweb.firstmedia, 10, 200, 300) }}" />
+				<img src="{{ asset('images/tn200/' ~ pageweb.firstmedia.fichierNom) }}" alt="{{ pageweb.firstmedia.nom }}" class="img-rounded" style="float:left;margin:3px 8px 4px 0px;" />
 			</a>
 			{% endif %}
 			<h1>{{ pageweb.titreh1|raw }}</h1>
@@ -25,7 +25,7 @@
 			{% if pageweb.medias|length > 0 %}
 			{% for media in pageweb.medias %}
 			<a href="{{ asset('images/original/' ~ media.fichierNom) }}" title="{{ media.nom }}" class="fancybox" data-fancybox-group="gallery{{ pageweb.id }}">
-				<img src="{{ asset('images/tn128/' ~ media.fichierNom) }}" alt="{{ media.nom }}" class="img-thumbnail" />
+				<img src="{{ asset('images/tn128/' ~ media.fichierNom) }}" alt="{{ media.nom }}" class="img-circle" />
 			</a>
 			{% endfor %}
 			{% endif %}

@@ -10,7 +10,7 @@
 		<div class="justify col-md-8 col-xs-12">
 			{% if pageweb.firstmedia is not null %}
 			<a href="{{ asset('images/original/' ~ pageweb.firstmedia.fichierNom) }}" title="{{ pageweb.firstmedia.nom }}" class="fancybox" data-fancybox-group="gallery{{ pageweb.id }}">
-				<img src="{{ asset('images/optim/' ~ pageweb.firstmedia.fichierNom) }}" alt="{{ pageweb.firstmedia.nom }}" class="" style="float:left;margin:-3px 8px 4px 0px;{{ imgVolume(pageweb.firstmedia, 10, 200, 300) }}" />
+				<img src="{{ asset('images/optim/' ~ pageweb.firstmedia.fichierNom) }}" alt="{{ pageweb.firstmedia.nom }}" class="img-thumbnail" style="float:left;margin:3px 8px 4px 0px;{{ imgVolume(pageweb.firstmedia, 10, 200, 300) }}" />
 			</a>
 			{% endif %}
 			<h1>{{ pageweb.titreh1|raw }}</h1>
