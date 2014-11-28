@@ -5,6 +5,7 @@
 {% block mainwindow %}
 <div id="pagedroite" class="topdecal12 bottomdecal30">
 	<div class="row">
+		<div class="col-md-1 hidden-xs"></div>
 		<div class="justify col-md-8 col-xs-12">
 			<h1>{{ pageweb.titreh1|raw }}</h1>
 			{% if pageweb.code is not null and pageweb.code != "" %}
@@ -16,7 +17,7 @@
 			{% endfor %}
 			{% endif %}
 		</div>
-		<div class="col-md-2 hidden-xs"></div>
+		<div class="col-md-3 hidden-xs"></div>
 	</div>
 </div>
 {% endblock mainwindow %}
