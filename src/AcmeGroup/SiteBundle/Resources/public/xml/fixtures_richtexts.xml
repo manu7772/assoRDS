@@ -17,7 +17,6 @@ noms de fichiers multiples : séparer par "|" (ex. texte="import@txt::intro.txt|
  -->
 <categories>
 	<categorie nom="Légalité" titre="Légalité" resume="Statuts de l'association." texte="import@txt::legalite.txt" protectedOnRemove="1" typeRichtext__nom="legalite" />
-	<categorie nom="Notre association" titre="Notre association" resume="Résumé de notre association" texte="import@txt::lassociation.txt" protectedOnRemove="1" typeRichtext__nom="pageweb" />
 	<categorie nom="Notre équipe" titre="Notre équipe" resume="Résumé sur notre équipe" texte="import@txt::notre-equipe.txt" protectedOnRemove="1" typeRichtext__nom="pageweb" />
 	<categorie nom="Ensemble de l'équipe" titre="Ensemble de l'équipe" resume="Résumé sur l'ensemble de l'équipe…" texte="Texte sur l'ensemble de l'équipe…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
 	<categorie nom="Trombinoscope" titre="Trombinoscope" resume="Résumé sur le Trombinoscope…" texte="Texte sur le Trombinoscope…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
@@ -26,6 +25,6 @@ noms de fichiers multiples : séparer par "|" (ex. texte="import@txt::intro.txt|
 	<categorie nom="Actions" titre="Actions" resume="Résumé sur les Actions" texte="Texte sur Les Actions…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
 	<categorie nom="Livre d'or" titre="Livre d'or" resume="Résumé sur le Livre d'or" texte="Texte sur le Livre d'or…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
 	<categorie nom="Hôpitaux partenaires" titre="Hôpitaux partenaires" resume="Résumé sur les Hôpitaux partenaires" texte="Texte sur les Hôpitaux partenaires" protectedOnRemove="1" typeRichtext__nom="pageweb" />
-	<categorie nom="CHU Saint-Etienne" titre="CHU Saint-Etienne" resume="Résumé sur le CHU Saint-Etienne" texte="Texte sur le CHU Saint-Etienne…" protectedOnRemove="1" typeRichtext__nom="pageweb" />
-	<categorie nom="Centre Romans Ferrari" titre="Centre Romans Ferrari" resume="Résumé sur le Centre Romans Ferrari" texte="Texte sur le Centre Romans Ferrari" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="CHU Saint-Etienne" titre="CHU Saint-Etienne" resume="Résumé sur le CHU Saint-Etienne" texte="import@txt::CHUstetienne.txt" protectedOnRemove="1" typeRichtext__nom="pageweb" />
+	<categorie nom="Centre Romans Ferrari" titre="Centre Romans Ferrari" resume="Résumé sur le Centre Romans Ferrari" texte="import@txt::centreRomansFerrari.txt" protectedOnRemove="1" typeRichtext__nom="pageweb" />
 </categories>

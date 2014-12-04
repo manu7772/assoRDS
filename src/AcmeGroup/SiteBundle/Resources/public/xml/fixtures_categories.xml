@@ -20,8 +20,8 @@ noms de fichiers multiples : séparer par "|" (ex. texte="import@txt::intro.txt|
 	<categorie nom="menu_01" descriptif="Menu principal du site" page_pageweb__nom="homepage" couleur="#FFFFFF" nommenu="menuOptions">
 		<item nom="Actualités" descriptif="Toutes les actualités autour de l'association" page_pageweb__nom="Actualités" couleur="#FFFFFF"></item>
 		<item nom="Notre association" descriptif="L'association" page_pageweb__nom="L'association" couleur="#FFFFFF">
-			<item nom="Devenir bénévole" descriptif="Comment devenir bénévole ?" page_pageweb__nom="Devenir bénévole" couleur="#FFFFFF"></item>
-			<item nom="Transparence financière" descriptif="" page_pageweb__nom="Transparence financière" couleur="#FFFFFF"></item>
+			<item nom="Nos valeurs" descriptif="Comment devenir bénévole ?" page_pageweb__nom="Devenir bénévole" couleur="#FFFFFF"></item>
+			<item nom="Ce que nous faisons" descriptif="" page_pageweb__nom="Ce que nous faisons" couleur="#FFFFFF"></item>
 		</item>
 		<item nom="Hôpitaux partenaires" descriptif="Les hôpitaux partenaires" page_pageweb__nom="Hôpitaux partenaires" couleur="#FFFFFF">
 			<item nom="CHU Saint-Etienne" descriptif="CHU Saint-Etienne" page_pageweb__nom="CHU Saint-Etienne" couleur="#FFFFFF">
@@ -32,18 +32,23 @@ noms de fichiers multiples : séparer par "|" (ex. texte="import@txt::intro.txt|
 				<!-- <item nom="Unité de vie 0-3 ans" descriptif="XXXXX" page_pageweb__nom="homepage" couleur="#FFFFFF"></item> -->
 				<!-- <item nom="Unité de vie 3R ado" descriptif="Rééducation, Réadapation, Réinsertion adolescents" page_pageweb__nom="homepage" couleur="#FFFFFF"></item> -->
 			</item>
+			<item nom="Aide aux particuliers" descriptif="Aide aux particuliers" page_pageweb__nom="Aide aux particuliers" couleur="#FFFFFF" />
 		</item>
 		<item nom="Nos actions" descriptif="Les actions que nous organisons pour le financement" page_pageweb__nom="Actions" couleur="#FFFFFF">
+			<item nom="Actions 2014" descriptif="Actions 2014" page_pageweb__nom="Actions 2014" couleur="#FFFFFF"></item>
+			<item nom="Actions 2013" descriptif="Actions 2013" page_pageweb__nom="Actions 2013" couleur="#FFFFFF"></item>
+			<item nom="Actions précédentes" descriptif="Actions précédentes" page_pageweb__nom="Actions précédentes" couleur="#FFFFFF"></item>
 			<item nom="Livre d'or" descriptif="Livre d'or" page_pageweb__nom="Livre d'or" couleur="#FFFFFF"></item>
 		</item>
 		<item nom="Notre équipe" descriptif="Les membres de l'association" page_pageweb__nom="Notre équipe" couleur="#FFFFFF">
-			<item nom="Ensemble" descriptif="L'ensemble de l'équipe" page_pageweb__nom="L'ensemble de l'équipe" couleur="#FFFFFF"></item>
-			<item nom="Trombinoscope" descriptif="Trombinoscope" page_pageweb__nom="Trombinoscope" couleur="#FFFFFF">
-				<item nom="Bureau" descriptif="Les membres de l'administration" page_pageweb__nom="Membres d'administration" couleur="#FFFFFF"></item>
-				<item nom="Bénévoles" descriptif="Les membres bénévoles" page_pageweb__nom="Les bénévoles" couleur="#FFFFFF"></item>
-			</item>
+			<item nom="Bureau" descriptif="Les membres de l'administration" page_pageweb__nom="Membres d'administration" couleur="#FFFFFF"></item>
+			<item nom="Bénévoles" descriptif="Les membres bénévoles" page_pageweb__nom="Les bénévoles" couleur="#FFFFFF"></item>
 		</item>
-		<item nom="Média/Presse" descriptif="Dossier de presse" page_pageweb__nom="Média Presse" couleur="#FFFFFF"></item>
+		<item nom="Média/Presse" descriptif="Dossier de presse" page_pageweb__nom="Média Presse" couleur="#FFFFFF">
+			<item nom="Presse écrite" descriptif="Presse écrite" page_pageweb__nom="Presse écrite" couleur="#FFFFFF"></item>
+			<item nom="Radio" descriptif="Radio" page_pageweb__nom="Radio" couleur="#FFFFFF"></item>
+			<item nom="Télévision" descriptif="Télévision" page_pageweb__nom="Télévision" couleur="#FFFFFF"></item>
+		</item>
 		<item nom="Nos partenaires" descriptif="Nos partenaires" page_pageweb__nom="Nos partenaires" couleur="#FFFFFF">
 			<item nom="Ils nous soutiennent" descriptif="Ils nous soutiennent" page_pageweb__nom="Ils nous soutiennent" couleur="#FFFFFF"></item>
 			<item nom="Devenez partenaire" descriptif="Comment devenir partenaire ?" page_pageweb__nom="Devenir partenaire" couleur="#FFFFFF"></item>

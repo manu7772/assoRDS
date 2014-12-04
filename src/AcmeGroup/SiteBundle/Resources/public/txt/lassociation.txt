@@ -1,2 +1,15 @@
-<h2>L'association</h2>
-<p>Texte de présentation de l'association</p>
+<p style="text-align: justify;">Depuis mars 2006, l&rsquo;association soutient et accompagne des <strong>enfants malades</strong> ou<strong> handicap&eacute;s</strong> en contribuant &agrave; am&eacute;liorer leur bien-&ecirc;tre durant l&rsquo;hospitalisation. Elle est devenue le <strong>partenaire privil&eacute;gi&eacute;&nbsp;:</strong></p>
+<ul style="text-align: justify;">
+<li>du <strong>Centre de r&eacute;&eacute;ducation p&eacute;diatrique</strong> et fonctionnelle <strong>Romans Ferrari</strong> (Miribel, Ain),</li>
+<li>du <strong>service onco-p&eacute;diatrique</strong> et de la <strong>chirurgie p&eacute;diatrique</strong> de <strong>l&rsquo;Institut Canc&eacute;rologique de la Loire</strong> &ndash; CHU de Saint-&Eacute;tienne. &nbsp;</li>
+</ul>
+<p style="text-align: justify;">Son action est conduite dans deux domaines&nbsp;:</p>
+<ul style="text-align: justify;">
+<li>Le premier est d&rsquo;ordre m&eacute;dical. L&rsquo;association <strong>&laquo;&nbsp;offre&nbsp;&raquo; aux enfants le meilleur acc&egrave;s possible aux soins</strong> (rapprochement parent(s) / enfant pendant l&rsquo;hospitalisation, dons de mat&eacute;riels m&eacute;dicaux, prise en charge des soins non rembours&eacute;s par la S&eacute;curit&eacute; sociale, aide pour suivre des soins &agrave; l&rsquo;&eacute;tranger, etc.).</li>
+</ul>
+<ul style="text-align: justify;">
+<li>Le second a trait &agrave; tout ce qui ne rel&egrave;ve pas du champ m&eacute;dical, mais qui est indispensable pour la gu&eacute;rison (valorisation de l&rsquo;environnement lors de l&rsquo;hospitalisation, poursuite d&rsquo;une scolarit&eacute; normale, activit&eacute;s culturelles et sportives, etc.).</li>
+</ul>
+<p style="text-align: justify;">L&rsquo;association apporte &eacute;galement des <strong>conseils administratifs</strong> aux familles. Apr&egrave;s deux ans de bataille administrative, elle vient d&rsquo;obtenir le <strong>relogement d&rsquo;une adolescente</strong> et de sa famille <strong>dans un appartement adapt&eacute; &agrave; son handicap</strong>.</p>
+<p style="text-align: justify;">Enfin, elle contribue au <strong>maintien d&rsquo;un lien social entre chaque enfant hospitalis&eacute; et son entourage</strong>, et elle participe &agrave; la <strong>r&eacute;insertion des enfants apr&egrave;s leur hospitalisation</strong>.</p>
+<p style="text-align: justify;">En huit ans, <strong>l&rsquo;association a collect&eacute; 54 000 euros</strong> en organisant diff&eacute;rentes manifestations. Par ailleurs, elle ne per&ccedil;oit aucune subvention publique.</p>
