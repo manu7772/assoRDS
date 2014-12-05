@@ -41,7 +41,7 @@ noms de fichiers multiples : séparer par "|" (ex. texte="import@txt::intro.txt|
 			<item nom="Livre d'or" descriptif="Livre d'or" page_pageweb__nom="Livre d'or" couleur="#FFFFFF"></item>
 		</item>
 		<item nom="Notre équipe" descriptif="Les membres de l'association" page_pageweb__nom="Notre équipe" couleur="#FFFFFF">
-			<item nom="Bureau" descriptif="Les membres de l'administration" page_pageweb__nom="Membres d'administration" couleur="#FFFFFF"></item>
+			<item nom="Bureau" descriptif="Les membres de l'administration" page_pageweb__nom="Membres du Bureau" couleur="#FFFFFF"></item>
 			<item nom="Bénévoles" descriptif="Les membres bénévoles" page_pageweb__nom="Les bénévoles" couleur="#FFFFFF"></item>
 		</item>
 		<item nom="Média/Presse" descriptif="Dossier de presse" page_pageweb__nom="Média Presse" couleur="#FFFFFF">

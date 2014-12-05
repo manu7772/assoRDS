@@ -132,9 +132,29 @@ jQuery(document).ready(function($) {
 	// 	alert("Formulaire modifié");
 	// });
 	
-	$( ".datepicker" ).datepicker({ 
-		minDate: 0,
-		// maxDate: "+1M +10D",
+	////////////////////////////////
+	// Formulaires dynammiques   //
+	//////////////////////////////
+	// $("body").on("change", ".dynform select, .dynform input", function() {
+	// 	alert("Formulaire modifié");
+	// });
+	
+	$( ".datepicker" ).datepicker({
+		// dates : futures uniquement et jusqu'à -1 mois
+		minDate: "-1M",
+		// minDate: 0,
+		dateFormat: "dd-mm-yy"
+	});
+
+	$( ".datepicker2" ).datepicker({
+		// dates : min - 1 mois / max + 1 mois et 10 jours
+		minDate: "-1M",
+		maxDate: "+1M +10D",
+		dateFormat: "dd-mm-yy"
+	});
+
+	$( ".datepickerAll" ).datepicker({
+		// toutes dates
 		dateFormat: "dd-mm-yy"
 	});
 

@@ -13,6 +13,10 @@
 			{% endif %}
 			{% if pageweb.richtexts|length > 0 %}
 			{% for richtext in pageweb.richtexts %}
+			<hr>
+			{% if richtext.titre is not null and richtext.titre != "" %}
+			<h2>{{ richtext.titre|raw }}</h2>
+			{% endif %}
 			<p>{{ magnifyText(richtext.texte)|raw }}</p>
 			{% endfor %}
 			{% endif %}

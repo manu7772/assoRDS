@@ -82,8 +82,8 @@ class SiteController extends Controller {
 						}
 					}
 					$data['events']['futurevents'] = $this->get("acmeGroup.events")->getRepo()->findFuturs('actualites', $sens, $limit);
-					// si aucun résultat… retrouve les 3 actualités passées les plus récentes
-					if(count($data['events']['futurevents']) < 1) {
+					// si moins de 3 résultats… retrouve les 3 actualités passées les plus récentes
+					if(count($data['events']['futurevents']) < 3) {
 						$data['events']['pastevents'] = $this->get("acmeGroup.events")->getRepo()->findPasses('actualites', 'DESC', 3);
 					}
 					break;
