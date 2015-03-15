@@ -5,39 +5,96 @@
 {% block mainwindow %}
 <div id="pagedroite" class="topdecal12 bottomdecal30">
 	<h1>{{ pageweb.titreh1|raw }}</h1>
+	<span class='visible-xs'>
 	{% for timevent in ['futurevents', 'pastevents'] %}
 	{% if loop.index == 1 %}
-		{% set taille = 200 %}
 		{% set sh2 = "high" %}
 	{% endif %}
-	{% for event in events[timevent] %}
-	<div class="bloc-event-list">
-		<div class="col-xs-3 visible-xs"></div>
-		<div class="event-bloc-image col-md-3 col-xs-6">
-			{{ include('AcmeGroupSiteBundle:blocs:imageEvent.html.twig') }}
-		</div>
-		<div class="col-xs-3 visible-xs"></div>
-		<div class="event-bloc-texte col-md-9 col-xs-12">
-			<div>
-				<h2 class="{{ sh2|raw }}">
-					<a href="{{ url('acme_site_pageweb', {categorieSlug: 'actualites', pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Voir {{ event.nom }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp;
-					<a class="fancymd badge hidden-xs" href="{{ url('acme_site_pagemodale', {pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Coup d'œil rapide">
-						<span class="glyphicon glyphicon-eye-open"></span>
-					</a>
-				</h2>
-				{% if event.datedebut != null or event.datefin != null %}
-				<p class="date">{{ intervalDateFR(event.datedebut, event.datefin, false, true)|raw }}</p>
-				{% else %}
-				<p class="date ital">Permanent</p>
-				{% endif %}
-				<p class="justify">{{ magnifyText(phraseCut(event.descriptif, 300))|raw }}</p>
+		{% for event in events[timevent] %}
+		<div class="bloc-event-list">
+			<div class="col-xs-3 visible-xs"></div>
+			<div class="event-bloc-image col-md-3 col-xs-6">
+				{{ include('AcmeGroupSiteBundle:blocs:imageEvent.html.twig') }}
 			</div>
+			<div class="col-xs-3 visible-xs"></div>
+			<div class="event-bloc-texte col-md-9 col-xs-12">
+				<div>
+					<h2 class="{{ sh2|raw }}">
+						<a href="{{ url('acme_site_pageweb', {categorieSlug: 'actualites', pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Voir {{ event.nom }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp;
+						<a class="fancymd badge hidden-xs" href="{{ url('acme_site_pagemodale', {pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Coup d'œil rapide">
+							<span class="glyphicon glyphicon-eye-open"></span>
+						</a>
+					</h2>
+					{% if event.datedebut != null or event.datefin != null %}
+					<p class="date">{{ intervalDateFR(event.datedebut, event.datefin, false, true)|raw }}</p>
+					{% else %}
+					<p class="date ital">Permanent</p>
+					{% endif %}
+					<p class="justify">{{ magnifyText(phraseCut(event.descriptif, 300))|raw }}</p>
+				</div>
+			</div>
+			<div style="height:0px;clear:both;"></div>
 		</div>
-		<div style="height:0px;clear:both;"></div>
-	</div>
-	{% set taille = 80 %}
+		{% endfor %}
 	{% set sh2 = "" %}
 	{% endfor %}
-	{% endfor %}
+	</span>
+	<span class='hidden-xs'>
+		<div id="slideshow" class="carousel slide" data-ride="carousel" data-speed="1000">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				{% for timevent in ['futurevents', 'pastevents'] %}
+				{% for key,event in events[timevent] %}
+				<li data-target="#slideshow" data-slide-to="{{ key }}"></li>
+				{% endfor %}
+				{% endfor %}
+			</ol>
+		
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				{% for timevent in ['futurevents', 'pastevents'] %}
+				{% for key,event in events[timevent] %}
+				<div class='item'>
+					<div class="bloc-event-list">
+						<div class="col-xs-3 visible-xs"></div>
+						<div class="event-bloc-image col-md-3 col-xs-6">
+							{{ include('AcmeGroupSiteBundle:blocs:imageEvent.html.twig') }}
+						</div>
+						<div class="col-xs-3 visible-xs"></div>
+						<div class="event-bloc-texte col-md-9 col-xs-12">
+							<div>
+								<h2>
+									<a href="{{ url('acme_site_pageweb', {categorieSlug: 'actualites', pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Voir {{ event.nom }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp;
+									<a class="fancymd badge hidden-xs" href="{{ url('acme_site_pagemodale', {pagewebSlug: 'un-	evenement', 	pagedata: event.slug }) }}" title="Coup d'œil rapide">
+										<span class="glyphicon glyphicon-eye-open"></span>
+									</a>
+								</h2>
+								{% if event.datedebut != null or event.datefin != null %}
+								<p class="date">{{ intervalDateFR(event.datedebut, event.datefin, false, true)|raw }}</p>
+								{% else %}
+								<p class="date ital">Permanent</p>
+								{% endif %}
+								<p class="justify">{{ magnifyText(phraseCut(event.descriptif, 300))|raw }}</p>
+							</div>
+						</div>
+						<div style="height:0px;clear:both;"></div>
+					</div>
+				<div>
+				{% endfor %}
+				{% endfor %}
+			<div>
+		
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</span>
 </div>
 {% endblock mainwindow %}
+
