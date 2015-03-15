@@ -10,7 +10,9 @@
         "doctrine/doctrine-fixtures-bundle" : "dev-master",
         "symfony/swiftmailer-bundle" : "2.3.*",
         "friendsofsymfony/user-bundle" : "dev-master",
-        "doctrine/orm" : ">=2.2.3,<2.4-dev",
+        "doctrine/orm" : "2.4",
+        "doctrine/dbal": "2.4",
+        "doctrine/common": "2.4",
         "stof/doctrine-extensions-bundle" : "1.1.0",
         "doctrine/data-fixtures" : "@dev",
         "symfony/assetic-bundle" : "2.3.*",
@@ -24,7 +26,8 @@
         "sensio/distribution-bundle" : "2.3.*",
         "doctrine/doctrine-bundle" : "1.2.*",
         "leafo/lessphp": "*",
-        "labo/testmanu-bundle": "2.0.0.*@dev"
+        "labo/testmanu-bundle": "2.0.0.*@dev",
+        "jms/serializer-bundle": "dev-master"
     },
     "autoload" : {
         "psr-0" : {
