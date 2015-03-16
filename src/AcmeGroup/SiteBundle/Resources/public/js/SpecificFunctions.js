@@ -8,9 +8,31 @@ jQuery(document).ready(function($) {
 		speed: 400,
 		type: "vertical"
 	});
-	$('.carousel').each(function() {
+	$('.car-intro').each(function() {
 		$(this).carousel({ interval: $(this).attr('data-speed') });
 	});
+	$('.car-event').each(function() {
+		$(this).carousel({
+			interval: false,
+			speed: false,
+			wrap: false
+		});
+	});
+	// menu pour carousel
+	$('body').on('mouseenter', '.carousel-menu', function() {
+		$(this).data('bgcolor', $(this).css('background-color'));
+		$(this).css('background-color', '#666');
+	});
+	$('body').on('mouseleave', '.carousel-menu', function() {
+		$(this).css('background-color', $(this).data('bgcolor'));
+	});
+	$('body').on('mouseenter', '.carousel-menu', function() {
+		id = $(this).attr('id').split('-');
+		indx = parseInt(id[1]);
+		// alert('Change carousel : '+indx);
+		$($(this).attr('data-ref')).carousel(indx);
+	});
+	// tooltips
 	$('.tooltips').tooltip();
 
 

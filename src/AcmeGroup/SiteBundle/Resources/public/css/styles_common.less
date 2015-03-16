@@ -30,6 +30,7 @@
 @topline: 160px;
 @limit_xs: 768px;
 @haut_main: 432px;
+@haut_main_event: 360px;
 @topdecal: 18px;
 
 @round: 5px;
@@ -381,6 +382,16 @@ div#slideshow {
 }
 div#slideshow .item >div {
 	height: @haut_main;
+}
+
+div#slideshow-event {
+	height: @haut_main_event;
+	z-index: 1;
+	width: 85%;
+	margin: 0px auto;
+}
+div#slideshow-event .item >div {
+	height: @haut_main_event;
 }
 
 div#boutonDon >a {
