@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
 	$('body').on('mouseleave', '.carousel-menu', function() {
 		$(this).css('background-color', $(this).data('bgcolor'));
 	});
-	$('body').on('mouseenter', '.carousel-menu', function() {
+	$('body').on('click', '.carousel-menu', function() {
 		id = $(this).attr('id').split('-');
 		indx = parseInt(id[1]);
 		// alert('Change carousel : '+indx);

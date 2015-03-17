@@ -21,16 +21,13 @@
 				<div>
 					<h2 class="{{ sh2|raw }}">
 						<a href="{{ url('acme_site_pageweb', {categorieSlug: 'actualites', pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Voir {{ event.nom }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp;
-						<a class="fancymd badge hidden-xs" href="{{ url('acme_site_pagemodale', {pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Coup d'œil rapide">
-							<span class="glyphicon glyphicon-eye-open"></span>
-						</a>
 					</h2>
 					{% if event.datedebut != null or event.datefin != null %}
 					<p class="date">{{ intervalDateFR(event.datedebut, event.datefin, false, true)|raw }}</p>
 					{% else %}
 					<p class="date ital">Permanent</p>
 					{% endif %}
-					<p class="justify">{{ magnifyText(phraseCut(event.descriptif, 300))|raw }}</p>
+					<p class="justify">{{ magnifyText(event.texte)|raw }}</p>
 				</div>
 			</div>
 			<div style="height:0px;clear:both;"></div>
@@ -47,24 +44,21 @@
 			{% for key,event in events[timevent] %}
 			<div class='item{% if loop.first %} active{% endif %}'>
 				<div class="bloc-event-list">
-					<div class="event-bloc-image col-md-3 col-xs-6">
-						{{ include('AcmeGroupSiteBundle:blocs:imageEvent.html.twig') }}
-					</div>
-					<div class="event-bloc-texte col-md-9 col-xs-12">
-						<div>
-							<h2>
-								<a href="{{ url('acme_site_pageweb', {categorieSlug: 'actualites', pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Voir {{ event.nom }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp;
-								<a class="fancymd badge hidden-xs" href="{{ url('acme_site_pagemodale', {pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Coup d'œil rapide">
-									<span class="glyphicon glyphicon-eye-open"></span>
-								</a>
-							</h2>
-							{% if event.datedebut != null or event.datefin != null %}
-							<p class="date">{{ intervalDateFR(event.datedebut, event.datefin, false, true)|raw }}</p>
-							{% else %}
-							<p class="date ital">Permanent</p>
-							{% endif %}
-							<p class="justify">{{ magnifyText(phraseCut(event.texte, 1600))|raw }}</p>
-						</div>
+					{% if event.image is not null or event.partenaires|length > 0 %}{% set coltxt = '9' %}{% else %}{% set coltxt = '12' %}{% endif %}
+					{{ include('AcmeGroupSiteBundle:blocs:imageEvent.html.twig') }}
+					<div class="event-bloc-texte col-md-{{ coltxt }} col-xs-12">
+						{% if event.datedebut != null or event.datefin != null %}
+						<p class="date">{{ intervalDateFR(event.datedebut, event.datefin, false, true)|raw }}</p>
+						{% else %}
+						<p class="date ital">Permanent</p>
+						{% endif %}
+						<h2>
+							<a href="{{ url('acme_site_pageweb', {categorieSlug: 'actualites', pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Voir {{ event.nom }}">{{ magnifyText(event.nom)|raw }}</a>&nbsp;
+							<a class="fancymd badge" href="{{ url('acme_site_pagemodale', {pagewebSlug: 'un-evenement', pagedata: event.slug }) }}" title="Coup d'œil rapide">
+								<span class="glyphicon glyphicon-eye-open"></span>
+							</a>
+						</h2>
+						<p class="justify" style="overflow:auto;">{{ magnifyText(phraseCut(event.texte, 1600))|raw }}</p>
 					</div>
 				</div>
 			</div>
@@ -80,11 +74,11 @@
 			<span class="glyphicon glyphicon-chevron-right" style="color:#999;font-size:15px;right:-15%"></span>
 		</a>
 	</div>
-	<div>
+	<div class="hidden-xs" style='float:right;text-align:right;'>
 		{% set idx = 0 %}
 		{% for timevent in ['futurevents', 'pastevents'] %}
 		{% for key,event in events[timevent] %}
-		<div id="carmenu-{{ idx }}" data-ref="#slideshow-event" class="carousel-menu tooltips" data-toggle="tooltip" data-placement="bottom" title="{{ event.nom|raw }}" style="width:18px;height:18px;background-color:#999;margin:4px 4px 0px 0px;float:left;cursor:pointer;" ></div>
+		<div id="carmenu-{{ idx }}" data-ref="#slideshow-event" class="carousel-menu tooltips" data-toggle="tooltip" data-placement="bottom" title="{{ event.nom|raw }}" style="width:18px;height:18px;background-color:#999;margin:4px 4px 0px 0px;display:inline-block;cursor:pointer;" ></div>
 		{% set idx = idx + 1 %}
 		{% endfor %}
 		{% endfor %}

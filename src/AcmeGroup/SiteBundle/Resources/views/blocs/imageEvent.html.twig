@@ -1,18 +1,24 @@
-{% if event.image is not null %}
-<a href="{{ asset('images/original/' ~ event.image.fichierNom) }}" title="{{ event.nom|striptags }}" class="fancybox" data-fancybox-group="gallery{{ event.id }}">
-	<img src="{{ asset('images/original/' ~ event.image.fichierNom) }}" alt="{{ event.nom|striptags }}" class="thumb img-thumbnail" style="width:100%;">
-</a>
-{% elseif event.partenaires is not null %}
-{% set stop = 0 %}
-{% for partenaire in event.partenaires %}
-{% if partenaire.logo is not null and stop == 0 %}
-{% set stop = 1 %}
-<a href="{{ asset('images/logo/' ~ partenaire.logo.fichierNom) }}" title="{{ partenaire.logo.nom|striptags }}" class="fancybox img-thumbnail" data-fancybox-group="gallery{{ partenaire.id }}" style="text-align:center;">
-	<img src="{{ asset('images/logo/' ~ partenaire.logo.fichierNom) }}" alt="{{ partenaire.nom|striptags }}" class="thumb" style="width:35%;">
-</a>
-{% endif %}
-{% endfor %}
-{% if stop == 0 %}
-	<!-- aucun logo/image -->
-{% endif %}
+{% if event.image is not null or event.partenaires|length > 0 %}
+<div class="event-bloc-image col-md-3 col-xs-6">
+	{% if event.image is not null %}
+	<a href="{{ asset('images/original/' ~ event.image.fichierNom) }}" title="{{ event.nom|striptags }}" class="fancybox" data-fancybox-group="gallery{{ event.id }}">
+		<img src="{{ asset('images/original/' ~ event.image.fichierNom) }}" alt="{{ event.nom|striptags }}" class="thumb img-thumbnail" style="width:100%;">
+	</a>
+	{% endif %}
+
+	{% if event.partenaires|length > 0 %}
+	{% set stop = 0 %}
+	{% for partenaire in event.partenaires %}
+	{% if partenaire.logo is not null and stop == 0 %}
+	{% set stop = 1 %}
+	<a href="{{ asset('images/logo/' ~ partenaire.logo.fichierNom) }}" title="{{ partenaire.logo.nom|striptags }}" class="fancybox img-thumbnail" data-fancybox-group="gallery{{ partenaire.id }}" style="text-align:center;">
+		<img src="{{ asset('images/logo/' ~ partenaire.logo.fichierNom) }}" alt="{{ partenaire.nom|striptags }}" class="thumb" style="width:35%;">
+	</a>
+	{% endif %}
+	{% endfor %}
+	{% if stop == 0 %}
+		<!-- aucun logo/image -->
+	{% endif %}
+	{% endif %}
+</div>
 {% endif %}
