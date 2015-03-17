@@ -20,11 +20,15 @@ jQuery(document).ready(function($) {
 	});
 	// menu pour carousel
 	$('body').on('mouseenter', '.carousel-menu', function() {
-		$(this).data('bgcolor', $(this).css('background-color'));
-		$(this).css('background-color', '#666');
+		if($(this).attr('data-action') != 'ebablecolor') {
+			$(this).data('bgcolor', $(this).css('background-color'));
+			$(this).css('background-color', '#666');
+		}
 	});
 	$('body').on('mouseleave', '.carousel-menu', function() {
-		$(this).css('background-color', $(this).data('bgcolor'));
+		if($(this).attr('data-action') != 'ebablecolor') {
+			$(this).css('background-color', $(this).data('bgcolor'));
+		}
 	});
 	$('body').on('click', '.carousel-menu', function() {
 		id = $(this).attr('id').split('-');

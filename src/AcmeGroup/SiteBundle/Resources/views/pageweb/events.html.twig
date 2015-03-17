@@ -4,9 +4,22 @@
 
 {% block mainwindow %}
 <div id="pagedroite" class="topdecal12 bottomdecal30">
-	<h1>{{ pageweb.titreh1|raw }}</h1>
+	{% set idtab = null %}
+	{% set idx = 0 %}
+	{% set typeevents = ['pastevents', 'futurevents'] %}
+	{% for timevent in typeevents %}
+	{% for key,event in events[timevent] %}
+		{% if eventactive == event.id %}{% set idtab = idx %}{% endif %}
+	{% set idx = idx + 1 %}
+	{% endfor %}
+	{% endfor %}
+	<h1>
+		{{ pageweb.titreh1|raw }} {% if idtab != null %}
+		<small id="carnow-{{ idtab }}" data-ref="#slideshow-event" class="carousel-menu tooltips" data-action='ebablecolor' data-toggle="tooltip" data-placement="right" title="Revenir à l'évènement futur le plus proche…" style="cursor:pointer;">Bientôt…</small>
+		{% endif %}
+	</h1>
 	<span class='visible-xs'>
-	{% for timevent in ['futurevents', 'pastevents'] %}
+	{% for timevent in typeevents %}
 	{% if loop.index == 1 %}
 		{% set sh2 = "high" %}
 	{% endif %}
@@ -38,7 +51,6 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			{% set idx = 0 %}
-			{% set typeevents = ['pastevents', 'futurevents'] %}
 			{% for timevent in typeevents %}
 			{% for key,event in events[timevent] %}
 			<div class='item{% if eventactive == event.id %} active{% endif %}'>
