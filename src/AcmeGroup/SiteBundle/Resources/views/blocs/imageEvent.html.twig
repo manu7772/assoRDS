@@ -9,9 +9,9 @@
 	{% if event.partenaires|length > 0 %}
 	{% set stop = 0 %}
 	{% for partenaire in event.partenaires %}
-	{% if partenaire.logo is not null and stop == 0 %}
+	{% if partenaire.logo is not null %}
 	{% set stop = 1 %}
-	<a href="{{ asset('images/logo/' ~ partenaire.logo.fichierNom) }}" title="{{ partenaire.logo.nom|striptags }}" class="fancybox img-thumbnail" data-fancybox-group="gallery{{ partenaire.id }}" style="text-align:center;">
+	<a href="{{ asset('images/logo/' ~ partenaire.logo.fichierNom) }}" title="{{ partenaire.logo.nom|striptags }}" class="fancybox img-thumbnail hidden-xs hidden-sm" data-fancybox-group="gallery{{ partenaire.id }}" style="text-align:center;">
 		<img src="{{ asset('images/logo/' ~ partenaire.logo.fichierNom) }}" alt="{{ partenaire.nom|striptags }}" class="thumb" style="width:35%;">
 	</a>
 	{% endif %}

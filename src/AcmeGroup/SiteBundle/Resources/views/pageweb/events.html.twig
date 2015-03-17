@@ -13,9 +13,7 @@
 		{% for event in events[timevent] %}
 		<div class="bloc-event-list">
 			<div class="col-xs-3 visible-xs"></div>
-			<div class="event-bloc-image col-md-3 col-xs-6">
 				{{ include('AcmeGroupSiteBundle:blocs:imageEvent.html.twig') }}
-			</div>
 			<div class="col-xs-3 visible-xs"></div>
 			<div class="event-bloc-texte col-md-9 col-xs-12">
 				<div>
@@ -40,9 +38,10 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			{% set idx = 0 %}
-			{% for timevent in ['futurevents', 'pastevents'] %}
+			{% set typeevents = ['pastevents', 'futurevents'] %}
+			{% for timevent in typeevents %}
 			{% for key,event in events[timevent] %}
-			<div class='item{% if loop.first %} active{% endif %}'>
+			<div class='item{% if eventactive == event.id %} active{% endif %}'>
 				<div class="bloc-event-list">
 					{% if event.image is not null or event.partenaires|length > 0 %}{% set coltxt = '9' %}{% else %}{% set coltxt = '12' %}{% endif %}
 					{{ include('AcmeGroupSiteBundle:blocs:imageEvent.html.twig') }}
@@ -58,7 +57,7 @@
 								<span class="glyphicon glyphicon-eye-open"></span>
 							</a>
 						</h2>
-						<p class="justify" style="overflow:auto;">{{ magnifyText(phraseCut(event.texte, 1600))|raw }}</p>
+						<p class="justify" style="overflow:auto;">{{ magnifyText(event.texte)|raw }}</p>
 					</div>
 				</div>
 			</div>
@@ -76,9 +75,10 @@
 	</div>
 	<div class="hidden-xs" style='float:right;text-align:right;'>
 		{% set idx = 0 %}
-		{% for timevent in ['futurevents', 'pastevents'] %}
+		{% for timevent in typeevents %}
 		{% for key,event in events[timevent] %}
-		<div id="carmenu-{{ idx }}" data-ref="#slideshow-event" class="carousel-menu tooltips" data-toggle="tooltip" data-placement="bottom" title="{{ event.nom|raw }}" style="width:18px;height:18px;background-color:#999;margin:4px 4px 0px 0px;display:inline-block;cursor:pointer;" ></div>
+		{% if eventactive == event.id %}{% set color = 'orange' %}{% else %}{% set color = '#999' %}{% endif %}
+		<div id="carmenu-{{ idx }}" data-ref="#slideshow-event" class="carousel-menu tooltips" data-toggle="tooltip" data-placement="bottom" title="{{ event.nom|raw }}" style="width:18px;height:18px;background-color:{{ color }};margin:4px 4px 0px 0px;display:inline-block;cursor:pointer;" ></div>
 		{% set idx = idx + 1 %}
 		{% endfor %}
 		{% endfor %}

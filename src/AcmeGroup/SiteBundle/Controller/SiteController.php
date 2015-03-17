@@ -75,7 +75,7 @@ class SiteController extends Controller {
 					if(isset($pagedata['limit']) && $pagedata['limit'] !== null) {
 						$limit = intval($pagedata['limit']);
 					}
-					$sens = 'DESC';
+					$sens = 'ASC';
 					if(isset($pagedata['sens'])) {
 						if(in_array(strtoupper($pagedata['sens']), array("ASC", "DESC"))) {
 							$sens = strtoupper($pagedata['sens']);
@@ -84,7 +84,23 @@ class SiteController extends Controller {
 					$data['events']['futurevents'] = $this->get("acmeGroup.events")->getRepo()->findFuturs('actualites', $sens, $limit);
 					// si moins de 3 résultats… retrouve les 3 actualités passées les plus récentes
 					if(count($data['events']['futurevents']) < 3) {
-						$data['events']['pastevents'] = $this->get("acmeGroup.events")->getRepo()->findPasses('actualites', 'DESC', 3);
+						$data['events']['pastevents'] = $this->get("acmeGroup.events")->getRepo()->findPasses('actualites', 'ASC', 3);
+					}
+					// $date = new \DateTime();
+					// foreach($data['events']['futurevents'] as $event) {
+					// 	if($date )
+					// }
+					// echo('<pre>');
+					// print_r($data['events']);
+					// echo('</pre>');
+					reset($data['events']['futurevents']);
+					end($data['events']['pastevents']);
+					if(count($data['events']['futurevents']) > 0) {
+						$data['eventactive'] = current($data['events']['futurevents'])->getId();
+					} else if(count($data['events']['pastevents']) > 0) {
+						$data['eventactive'] = current($data['events']['pastevents'])->getId();
+					} else {
+						$data['eventactive'] = null;
 					}
 					break;
 
