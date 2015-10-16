@@ -8,13 +8,17 @@
 	<br class="hidden-xs" />
 	<br class="hidden-xs" />
 	<br class="hidden-xs" />
-	<div class="col-md-2 hidden-xs"></div>
-	<div class="col-md-8 col-xs-12 well well-lg center-child">
+
+	<div class="col-md-8 col-xs-12 col-md-offset-2 well well-lg center-child">
 		<h1><span class="glyphicon glyphicon-cog"></span></h1>
-		<h1>{{ magnifyText("Le paiment en ligne est en maintenance pour l'instant") }}</h1>
+		<h1>Le paiement en ligne<br>est en maintenance pour l'instant</h1>
 		<h4>Merci de votre compréhension.</h4>
+		<br>
+		<p>Néanmoins, vous pouvez envoyer directement vos dons<br>par chèque, libellé ou espèces, à l'odre de l'association :<p>
+		<p><strong>Association {{ societe.nom }} - {{ societe.adresse.adresse }} - {{ societe.adresse.cp }} {{ societe.adresse.ville }}<strong></p>
+		<p><small>Et n'oubliez pas de nous communiquer votre adresse postale pour vous renvoyer un reçu fiscal<br><i>(pour déduire 70% de votre don aux impôts)</i></small></p>
 	</div>
-	<div class="col-md-2 hidden-xs"></div>
+
 	<div style="height:10px;clear:both;"></div>
 	<span class="badge backpage" title="Revenir à la page précédente">Retour</span>
 	<div style="height:20px;clear:both;"></div>

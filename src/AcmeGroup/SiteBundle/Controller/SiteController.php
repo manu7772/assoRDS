@@ -125,6 +125,10 @@ class SiteController extends Controller {
 						$data["partenaire"] = current($part);
 					} else $data["partenaire"] = false;
 					break;
+
+				case 'faire-un-don':
+					$data['societe'] = $this->get("acmeGroup.version")->getRepo()->find($Tidx['id']);
+					break;
 				
 				default:
 					// pages par défaut / Dont celles qui n'ont pas besoin de données
