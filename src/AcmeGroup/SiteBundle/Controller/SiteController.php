@@ -16,7 +16,6 @@ class SiteController extends Controller {
 	//////////////////////////
 
 	public function indexAction() {
-		$this->get('acmeGroup.aelog')->createNewLogAuto();
 		return $this->render($this->verifVersionPage("Site:index"));
 	}
 
@@ -25,7 +24,6 @@ class SiteController extends Controller {
 	}
 
 	public function pagewebAction($categorieSlug = "web", $pagewebSlug = null, $pagedata = null) {
-		$this->get('acmeGroup.aelog')->createNewLogAuto();
 		// JSon décode et vérifie si c'était bien des données au format JSon (sinon les gardes telles quelles)
 		$pagedata = $this->compileData($pagedata);
 		// si la page appélée vient d'une catégorie (et non d'une pageweb)
@@ -84,7 +82,7 @@ class SiteController extends Controller {
 					$data['events']['futurevents'] = $this->get("acmeGroup.events")->getRepo()->findFuturs('actualites', $sens, $limit);
 					// si moins de 3 résultats… retrouve les 3 actualités passées les plus récentes
 					if(count($data['events']['futurevents']) < 3) {
-						$data['events']['pastevents'] = $this->get("acmeGroup.events")->getRepo()->findPasses('actualites', 'ASC', 3);
+						$data['events']['pastevents'] = $data['events']['pastevents'] + $this->get("acmeGroup.events")->getRepo()->findPasses('actualites', 'ASC', 3);
 					}
 					// $date = new \DateTime();
 					// foreach($data['events']['futurevents'] as $event) {
